@@ -64,20 +64,22 @@ function App() {
         <>
             <Navbar />
             <StatesBox />
-            <StateInput
-                state={state}
-                setState={setState}
-                handleSumbit={handleSumbit}
-            />
-            <GuessesInputs
-                handleSumbit={handleSumbit}
-                guess6={guess6}
-                guess5={guess5}
-                guess4={guess4}
-                guess3={guess3}
-                guess2={guess2}
-                guess1={guess1}
-            />
+            <div className="inputs">
+                <StateInput
+                    state={state}
+                    setState={setState}
+                    handleSumbit={handleSumbit}
+                />
+                <GuessesInputs
+                    handleSumbit={handleSumbit}
+                    guess6={guess6}
+                    guess5={guess5}
+                    guess4={guess4}
+                    guess3={guess3}
+                    guess2={guess2}
+                    guess1={guess1}
+                />
+            </div>
         </>
     );
 }

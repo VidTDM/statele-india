@@ -1,9 +1,12 @@
 @mixin input
     border: #ccc 2px solid
-    border-radius: 0.25rem
     font-size: 1.25rem
     padding: .5rem
     width: 25vw
+    &:focus,
+    &:hover 
+        outline: none
+        border: darken(#ccc, 20%) 2px solid
 
 html,
 body,
@@ -15,6 +18,7 @@ body,
 .navbar 
     display: flex
     justify-content: center
+    height: 5%
     header 
         display: flex
         align-items: center
@@ -23,51 +27,59 @@ body,
         .emoji 
             width: 2rem
             height: 2rem
-        
-    
-
 
 .navbar-hr 
     border: none
     height: 2.5px
     background-color: #ccc
 
+.statesBox
+    height: 40%
+    img
+        display: block
+        margin: auto
+        height: 100%
+        width: auto
+        background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23333' stroke-width='5' stroke-dasharray='10%2c12' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e")
 
-.statesBox,
-.statesBox img 
-    width: 15rem
-    height: 15rem
-    margin: auto
-    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23333' stroke-width='5' stroke-dasharray='10%2c12' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e")
-
+.inputs
+    height: 50%
+    display: flex
+    flex-direction: column
 
 input.state-input,
 button.state-input
     @include input
     width: auto
     transition: border-color 250ms
-    &:focus,
-    &:hover 
-        outline: none
-        border: darken(#ccc, 20%) 2px solid
+    border-radius: 0
+
+button.state-input
+    width: calc(8.75vw * 1) !important
+    border-top-right-radius: 0.25rem
+    border-bottom-right-radius: 0.25rem
 
 input.state-input
-    width: 17.5vw
+    width: calc(8.75vw * 1.9) !important
+    border-right: 0px
+    border-top-left-radius: 0.25rem
+    border-bottom-left-radius: 0.25rem
+    &:hover
+        border-right: 0px
 
 form.state-input 
-    margin: auto
-    margin-top: 1rem
+    margin: 0.5rem 0
     display: flex
     justify-content: center
-    gap: 0.5rem
 
 
 .guesses 
     display: flex
     flex-direction: column
     align-items: center
-    margin: .5rem
+    margin-bottom: .5rem
     gap: .5rem
     input 
         @include input
+        border-radius: .25rem
         border: #ccc 2px dashed

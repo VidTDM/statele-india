@@ -8,6 +8,7 @@ body,
 .navbar {
   display: flex;
   justify-content: center;
+  height: 5%;
 }
 .navbar header {
   display: flex;
@@ -26,23 +27,32 @@ body,
   background-color: #ccc;
 }
 
-.statesBox,
+.statesBox {
+  height: 40%;
+}
 .statesBox img {
-  width: 15rem;
-  height: 15rem;
+  display: block;
   margin: auto;
+  height: 100%;
+  width: auto;
   background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23333' stroke-width='5' stroke-dasharray='10%2c12' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+}
+
+.inputs {
+  height: 50%;
+  display: flex;
+  flex-direction: column;
 }
 
 input.state-input,
 button.state-input {
   border: #ccc 2px solid;
-  border-radius: 0.25rem;
   font-size: 1.25rem;
   padding: 0.5rem;
   width: 25vw;
   width: auto;
   transition: border-color 250ms;
+  border-radius: 0;
 }
 input.state-input:focus, input.state-input:hover,
 button.state-input:focus,
@@ -51,30 +61,44 @@ button.state-input:hover {
   border: #999999 2px solid;
 }
 
+button.state-input {
+  width: 8.75vw !important;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+
 input.state-input {
-  width: 17.5vw;
+  width: 16.625vw !important;
+  border-right: 0px;
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+input.state-input:hover {
+  border-right: 0px;
 }
 
 form.state-input {
-  margin: auto;
-  margin-top: 1rem;
+  margin: 0.5rem 0;
   display: flex;
   justify-content: center;
-  gap: 0.5rem;
 }
 
 .guesses {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0.5rem;
+  margin-bottom: 0.5rem;
   gap: 0.5rem;
 }
 .guesses input {
   border: #ccc 2px solid;
-  border-radius: 0.25rem;
   font-size: 1.25rem;
   padding: 0.5rem;
   width: 25vw;
+  border-radius: 0.25rem;
   border: #ccc 2px dashed;
+}
+.guesses input:focus, .guesses input:hover {
+  outline: none;
+  border: #999999 2px solid;
 }/*# sourceMappingURL=App.css.map */
