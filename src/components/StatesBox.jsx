@@ -2,7 +2,12 @@ function StatesBox() {
     return (
         <>
             <div className="statesBox">
-                <img src="https://static.thenounproject.com/png/1019313-200.png" alt="karnataka" />
+                <img
+                    src="../../src/assets/andhra_pradesh.png"
+                    alt="karnataka"
+                    loading="eager"
+                    fetchpriority="high"
+                />
             </div>
         </>
     );
