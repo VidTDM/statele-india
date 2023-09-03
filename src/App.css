@@ -16,10 +16,6 @@ body,
   font-size: 2rem;
   gap: 5rem;
 }
-.navbar header .emoji {
-  width: 2rem;
-  height: 2rem;
-}
 
 .navbar-hr {
   border: none;
@@ -54,17 +50,15 @@ button.state-input {
   transition: border-color 250ms;
   border-radius: 0;
 }
-input.state-input:focus, input.state-input:hover,
-button.state-input:focus,
-button.state-input:hover {
-  outline: none;
-  border: #999999 2px solid;
-}
 
 button.state-input {
   width: 8.75vw !important;
   border-top-right-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
+}
+button.state-input:is(:hover, :focus) {
+  border: #999999 2px solid;
+  border-left: #ccc 2px solid;
 }
 
 input.state-input {
@@ -73,7 +67,9 @@ input.state-input {
   border-top-left-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
 }
-input.state-input:hover {
+input.state-input:is(:hover, :focus) {
+  outline: none;
+  border: #999999 2px solid;
   border-right: 0px;
 }
 
@@ -97,8 +93,4 @@ form.state-input {
   width: 25vw;
   border-radius: 0.25rem;
   border: #ccc 2px dashed;
-}
-.guesses input:focus, .guesses input:hover {
-  outline: none;
-  border: #999999 2px solid;
 }/*# sourceMappingURL=App.css.map */

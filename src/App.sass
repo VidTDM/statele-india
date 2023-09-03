@@ -3,10 +3,6 @@
     font-size: 1.25rem
     padding: .5rem
     width: 25vw
-    &:focus,
-    &:hover 
-        outline: none
-        border: darken(#ccc, 20%) 2px solid
 
 html,
 body,
@@ -24,9 +20,6 @@ body,
         align-items: center
         font-size: 2rem
         gap: 5rem
-        .emoji 
-            width: 2rem
-            height: 2rem
 
 .navbar-hr 
     border: none
@@ -58,13 +51,18 @@ button.state-input
     width: calc(8.75vw * 1) !important
     border-top-right-radius: 0.25rem
     border-bottom-right-radius: 0.25rem
+    &:is(:hover, :focus)
+        border: darken(#ccc, 20%) 2px solid
+        border-left: #ccc 2px solid
 
 input.state-input
     width: calc(8.75vw * 1.9) !important
     border-right: 0px
     border-top-left-radius: 0.25rem
     border-bottom-left-radius: 0.25rem
-    &:hover
+    &:is(:hover, :focus)
+        outline: none
+        border: darken(#ccc, 20%) 2px solid
         border-right: 0px
 
 form.state-input 
