@@ -1,4 +1,4 @@
-import states_min from "../data/states.min";
+import states_min from "../../data/states.min";
 
 function StateInput({ state, setState, handleSumbit }) {
     return (
@@ -6,7 +6,7 @@ function StateInput({ state, setState, handleSumbit }) {
             <input
                 type="text"
                 className="state-input"
-                placeholder="State, Union Territory"
+                placeholder="State/Union Territory"
                 list="state-names"
                 value={state}
                 onChange={(e) => setState(e.target.value)}

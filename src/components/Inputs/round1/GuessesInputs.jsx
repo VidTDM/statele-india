@@ -1,4 +1,4 @@
-import states from "../../data/states";
+import states from "../../../data/states";
 
 function toRad(d) {
     return (d * Math.PI) / 180;
@@ -7,15 +7,16 @@ function toDeg(r) {
     return (r * 180) / Math.PI;
 }
 function stateObject(name, type) {
+    console.log(name);
+    if (name == null) return "";
     if (
         states[
             states.findIndex(
                 (state) => state.state.toLowerCase() == name.toLowerCase()
             )
         ] == undefined
-    ) {
+    )
         return "";
-    }
     if (type == "lat") {
         return states[
             states.findIndex(
