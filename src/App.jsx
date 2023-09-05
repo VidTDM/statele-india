@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import useDidMount from "./utils/useDidMount";
 import "./App.css";
 import Navbar from "./components/Navbar";
 import StatesBox from "./components/StatesBox";
@@ -6,20 +7,16 @@ import Inputs from "./components/Inputs/Inputs";
 import states_min from "./data/states.min";
 
 function App() {
-    useEffect(() => {
-        localStorage.setItem(
-            "ans",
-            states_min[
-                Math.floor(Math.random() * states_min.length)
-            ].toUpperCase()
-        );
-    }, []);
+    const [ans, setAns] = useState(
+        states_min[Math.floor(Math.random() * states_min.length)]
+    );
+    useDidMount(() => localStorage.setItem("ans", ans));
 
     return (
         <>
             <Navbar />
-            <StatesBox />
-            <Inputs />
+            <StatesBox ans={ans} />
+            <Inputs ans={ans}/>
         </>
     );
 }

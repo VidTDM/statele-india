@@ -93,4 +93,9 @@ form.state-input {
   width: 25vw;
   border-radius: 0.25rem;
   border: #ccc 2px dashed;
+}
+
+.correct {
+  background-color: #419b45;
+  color: white;
 }/*# sourceMappingURL=App.css.map */

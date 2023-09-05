@@ -1,4 +1,6 @@
+import { useMemo } from "react";
 import states from "../../../data/states";
+import states_min from "../../../data/states.min";
 
 function toRad(d) {
     return (d * Math.PI) / 180;
@@ -7,41 +9,44 @@ function toDeg(r) {
     return (r * 180) / Math.PI;
 }
 function stateObject(name, type) {
-    console.log(name);
-    if (name == null) return "";
+    // TODO: Fix wrong state guess
+    const nameLowerCase = name.toLowerCase();
+    console.log(nameLowerCase);
     if (
         states[
             states.findIndex(
-                (state) => state.state.toLowerCase() == name.toLowerCase()
+                (state) => state.state.toLowerCase() == nameLowerCase
             )
         ] == undefined
     )
-        return "";
+        return "s";
+    if (states_min.indexOf(nameLowerCase) == -1) return "a";
     if (type == "lat") {
         return states[
             states.findIndex(
-                (state) => state.state.toLowerCase() == name.toLowerCase()
+                (state) => state.state.toLowerCase() == nameLowerCase
             )
         ].lat;
     } else if (type == "long") {
         return states[
             states.findIndex(
-                (state) => state.state.toLowerCase() == name.toLowerCase()
+                (state) => state.state.toLowerCase() == nameLowerCase
             )
         ].long;
     }
 }
 
-function GuessesInputs({ guess1, guess2, guess3, guess4, guess5, guess6 }) {
+function GuessesInputs({ guess1, guess2, guess3, guess4, guess5, guess6, ans }) {
     function parseGuess(guess) {
-        const ans = localStorage.getItem("ans");
-        const lat1 = stateObject(guess, "lat"); // Guess | Y Axis
-        const long1 = stateObject(guess, "long"); // Guess | X Axis
+        // const ans = localStorage.getItem("ans");
+        const lat1 = stateObject(guess.replaceAll(' ', '_'), "lat"); // Guess | Y Axis
+        const long1 = stateObject(guess.replaceAll(' ', '_'), "long"); // Guess | X Axis
         const lat2 = stateObject(ans, "lat"); // Answer | Y Axis
         const long2 = stateObject(ans, "long"); // Answer | X Axis
         if (typeof lat1 != "number" || typeof long1 != "number") return "";
-        if (lat1 == lat2 || long1 == long2)
-            return `${guess.toUpperCase()} | 0 km | 🎉🎉🎉`;
+        if (lat1 == lat2 || long1 == long2) {
+            return [`${guess.toUpperCase()} | 0 km | 🎉🎉🎉`, 'correct'];
+        }
 
         // Calculate Distance
         const R = 6371; // km
@@ -66,51 +71,51 @@ function GuessesInputs({ guess1, guess2, guess3, guess4, guess5, guess6 }) {
         const directions = ["⬆️", "↗️", "➡️", "↘️", "⬇️", "↙️", "⬅️", "↖️"];
         const direction = directions[Math.round((positiveDegrees / 45) % 8)];
 
-        return `${guess.toUpperCase()} | ${d} km | ${direction}`;
+        return [`${guess.toUpperCase()} | ${d} km | ${direction}`, ''];
     }
     return (
         <div className="guesses">
             <input
                 type="text"
-                className="guesses-input guess-1"
+                className={`guesses-input guess-1 ${parseGuess(guess1)[1]}`}
                 placeholder="Guess 1"
                 disabled
-                value={parseGuess(guess1)}
+                value={useMemo(() => parseGuess(guess1)[0], [guess1])}
             />
             <input
                 type="text"
-                className="guesses-input guess-2"
+                className={`guesses-input guess-2 ${parseGuess(guess2)[1]}`}
                 placeholder="Guess 2"
                 disabled
-                value={parseGuess(guess2)}
+                value={useMemo(() => parseGuess(guess2)[0], [guess2])}
             />
             <input
                 type="text"
-                className="guesses-input guess-3"
+                className={`guesses-input guess-3 ${parseGuess(guess3)[1]}`}
                 placeholder="Guess 3"
                 disabled
-                value={parseGuess(guess3)}
+                value={useMemo(() => parseGuess(guess3)[0], [guess3])}
             />
             <input
                 type="text"
-                className="guesses-input guess-4"
+                className={`guesses-input guess-4 ${parseGuess(guess4)[1]}`}
                 placeholder="Guess 4"
                 disabled
-                value={parseGuess(guess4)}
+                value={useMemo(() => parseGuess(guess4)[0], [guess4])}
             />
             <input
                 type="text"
-                className="guesses-input guess-5"
+                className={`guesses-input guess-5 ${parseGuess(guess5)[1]}`}
                 placeholder="Guess 5"
                 disabled
-                value={parseGuess(guess5)}
+                value={useMemo(() => parseGuess(guess5)[0], [guess5])}
             />
             <input
                 type="text"
-                className="guesses-input guess-6"
+                className={`guesses-input guess-6 ${parseGuess(guess6)[1]}`}
                 placeholder="Guess 6"
                 disabled
-                value={parseGuess(guess6)}
+                value={useMemo(() => parseGuess(guess6)[0], [guess6])}
             />
         </div>
     );

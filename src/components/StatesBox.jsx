@@ -1,10 +1,10 @@
-function StatesBox() {
+function StatesBox({ ans }) {
     return (
         <>
             <div className="statesBox">
                 <img
-                    src="./statele-india/../../src/assets/andhra_pradesh.png"
-                    alt="andhra_pradesh"
+                    src={`./statele-india/../../src/assets/${ans}.png`}
+                    alt="Mystery State"
                     loading="eager"
                     fetchpriority="high"
                 />

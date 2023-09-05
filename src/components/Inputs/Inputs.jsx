@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import StateInput from "./StateInput";
 import GuessesInputs from "./round1/GuessesInputs";
 
-function Inputs() {
+function Inputs({ ans }) {
     const [state, setState] = useState("");
     const [guessNo, setGuessNo] = useState(1);
 
@@ -42,9 +42,6 @@ function Inputs() {
             case 6:
                 setGuess6(state);
                 break;
-
-            default:
-                break;
         }
         setState("");
     }
@@ -58,6 +55,7 @@ function Inputs() {
                 guess3={guess3}
                 guess2={guess2}
                 guess1={guess1}
+                ans={ans}
             />
         </div>
     );
