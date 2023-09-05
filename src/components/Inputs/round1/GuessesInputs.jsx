@@ -11,7 +11,6 @@ function toDeg(r) {
 function stateObject(name, type) {
     // TODO: Fix wrong state guess
     const nameLowerCase = name.toLowerCase();
-    console.log(nameLowerCase);
     if (
         states[
             states.findIndex(
@@ -38,7 +37,6 @@ function stateObject(name, type) {
 
 function GuessesInputs({ guess1, guess2, guess3, guess4, guess5, guess6, ans }) {
     function parseGuess(guess) {
-        // const ans = localStorage.getItem("ans");
         const lat1 = stateObject(guess.replaceAll(' ', '_'), "lat"); // Guess | Y Axis
         const long1 = stateObject(guess.replaceAll(' ', '_'), "long"); // Guess | X Axis
         const lat2 = stateObject(ans, "lat"); // Answer | Y Axis
