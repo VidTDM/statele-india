@@ -1,6 +1,5 @@
 import { useMemo } from "react";
 import states from "../../../data/states";
-import states_min from "../../../data/states.min";
 
 function toRad(d) {
     return (d * Math.PI) / 180;
@@ -10,6 +9,7 @@ function toDeg(r) {
 }
 function stateObject(name, type) {
     // TODO: Fix wrong state guess
+    if (name == "") return "";
     const nameLowerCase = name.toLowerCase();
     if (
         states[
@@ -18,8 +18,7 @@ function stateObject(name, type) {
             )
         ] == undefined
     )
-        return "s";
-    if (states_min.indexOf(nameLowerCase) == -1) return "a";
+        return "wrong-input";
     if (type == "lat") {
         return states[
             states.findIndex(
@@ -35,17 +34,26 @@ function stateObject(name, type) {
     }
 }
 
-function GuessesInputs({ guess1, guess2, guess3, guess4, guess5, guess6, ans }) {
+function GuessesInputs({
+    guess1,
+    guess2,
+    guess3,
+    guess4,
+    guess5,
+    guess6,
+    ans,
+    handleWrongInput
+}) {
     function parseGuess(guess) {
-        const lat1 = stateObject(guess.replaceAll(' ', '_'), "lat"); // Guess | Y Axis
-        const long1 = stateObject(guess.replaceAll(' ', '_'), "long"); // Guess | X Axis
+        const lat1 = stateObject(guess.replaceAll(" ", "_"), "lat"); // Guess | Y Axis
+        const long1 = stateObject(guess.replaceAll(" ", "_"), "long"); // Guess | X Axis
         const lat2 = stateObject(ans, "lat"); // Answer | Y Axis
         const long2 = stateObject(ans, "long"); // Answer | X Axis
+        if (lat1 == "wrong-input" || long2 == "wrong-input")
+            handleWrongInput();
         if (typeof lat1 != "number" || typeof long1 != "number") return "";
-        if (lat1 == lat2 || long1 == long2) {
-            return [`${guess.toUpperCase()} | 0 km | 🎉🎉🎉`, 'correct'];
-        }
-
+        if (lat1 == lat2 || long1 == long2)
+            return [`${guess.toUpperCase()} | 0 km | 🎉🎉🎉`, "correct"];
         // Calculate Distance
         const R = 6371; // km
         const x1 = lat2 - lat1;
@@ -60,7 +68,6 @@ function GuessesInputs({ guess1, guess2, guess3, guess4, guess5, guess6, ans }) 
                 Math.sin(dLong / 2);
         const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         const d = Math.round(R * c);
-
         // Calculate Direction
         const dX = lat2 - lat1; // Ans - Guess
         const dY = long2 - long1; // Ans - Guess
@@ -69,7 +76,7 @@ function GuessesInputs({ guess1, guess2, guess3, guess4, guess5, guess6, ans }) 
         const directions = ["⬆️", "↗️", "➡️", "↘️", "⬇️", "↙️", "⬅️", "↖️"];
         const direction = directions[Math.round((positiveDegrees / 45) % 8)];
 
-        return [`${guess.toUpperCase()} | ${d} km | ${direction}`, ''];
+        return [`${guess.toUpperCase()} | ${d} km | ${direction}`, ""];
     }
     return (
         <div className="guesses">
