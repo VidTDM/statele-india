@@ -49,10 +49,10 @@ function GuessesInputs({
         const long1 = stateObject(guess.replaceAll(" ", "_"), "long"); // Guess | X Axis
         const lat2 = stateObject(ans, "lat"); // Answer | Y Axis
         const long2 = stateObject(ans, "long"); // Answer | X Axis
-        if (lat1 == "wrong-input" || long2 == "wrong-input")
+        if (lat1 == "wrong-input" && long1 == "wrong-input")
             handleWrongInput();
         if (typeof lat1 != "number" || typeof long1 != "number") return "";
-        if (lat1 == lat2 || long1 == long2)
+        if (lat1 == lat2 && long1 == long2)
             return [`${guess.toUpperCase()} | 0 km | 🎉🎉🎉`, "correct"];
         // Calculate Distance
         const R = 6371; // km
@@ -73,8 +73,8 @@ function GuessesInputs({
         const dY = long2 - long1; // Ans - Guess
         const degrees = Math.round(toDeg(Math.atan2(dY, dX)));
         const positiveDegrees = degrees >= 0 ? degrees : 360 + degrees;
-        const directions = ["⬆️", "↗️", "➡️", "↘️", "⬇️", "↙️", "⬅️", "↖️"];
-        const direction = directions[Math.round((positiveDegrees / 45) % 8)];
+        const directions = ["↗️", "➡️", "↘️", "⬇️", "↙️", "⬅️", "↖️", "⬆️"];
+        const direction = directions[Math.round((positiveDegrees / 45) % 8) - 1];
 
         return [`${guess.toUpperCase()} | ${d} km | ${direction}`, ""];
     }

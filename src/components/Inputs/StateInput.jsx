@@ -10,10 +10,6 @@ function StateInput({ state, setState, handleSumbit }) {
                 list="state-names"
                 value={state}
                 onChange={(e) => setState(e.target.value)}
-                onKeyDown={(e) => {
-                    e.code == "Enter" &&
-                        document.querySelector("button.state-input").click();
-                }}
                 required
             />
             <datalist id="state-names">
