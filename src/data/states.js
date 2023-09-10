@@ -145,7 +145,7 @@ const states = [
         long: 88,
     },
     {
-        state: "tamil nadu",
+        state: "tamil_nadu",
         lat: 10,
         long: 78,
     },
