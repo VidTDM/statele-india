@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 import states from "../../../data/states";
+import { CardinalSubset, cardinalFromDegree } from "cardinal-direction";
 
 function toRad(d) {
     return (d * Math.PI) / 180;
@@ -8,7 +9,6 @@ function toDeg(r) {
     return (r * 180) / Math.PI;
 }
 function stateObject(name, type) {
-    // TODO: Fix wrong state guess
     if (name == "") return "";
     const nameLowerCase = name.toLowerCase();
     if (
@@ -42,15 +42,14 @@ function GuessesInputs({
     guess5,
     guess6,
     ans,
-    handleWrongInput
+    handleWrongInput,
 }) {
     function parseGuess(guess) {
         const lat1 = stateObject(guess.replaceAll(" ", "_"), "lat"); // Guess | Y Axis
         const long1 = stateObject(guess.replaceAll(" ", "_"), "long"); // Guess | X Axis
         const lat2 = stateObject(ans, "lat"); // Answer | Y Axis
         const long2 = stateObject(ans, "long"); // Answer | X Axis
-        if (lat1 == "wrong-input" && long1 == "wrong-input")
-            handleWrongInput();
+        if (lat1 == "wrong-input" && long1 == "wrong-input") handleWrongInput();
         if (typeof lat1 != "number" || typeof long1 != "number") return "";
         if (lat1 == lat2 && long1 == long2)
             return [`${guess.toUpperCase()} | 0 km | 🎉🎉🎉`, "correct"];
@@ -73,8 +72,14 @@ function GuessesInputs({
         const dY = long2 - long1; // Ans - Guess
         const degrees = Math.round(toDeg(Math.atan2(dY, dX)));
         const positiveDegrees = degrees >= 0 ? degrees : 360 + degrees;
-        const directions = ["↗️", "➡️", "↘️", "⬇️", "↙️", "⬅️", "↖️", "⬆️"];
-        const direction = directions[Math.round((positiveDegrees / 45) % 8) - 1];
+        const emojis = ["↗️", "➡️", "↘️", "⬇️", "↙️", "⬅️", "↖️", "⬆️"];
+        const directions = ["NE", "E", "SE", "S", "SW", "W", "NW", "N"];
+        const direction =
+            emojis[
+                directions.indexOf(
+                    cardinalFromDegree(positiveDegrees, CardinalSubset.Ordinal)
+                )
+            ];
 
         return [`${guess.toUpperCase()} | ${d} km | ${direction}`, ""];
     }

@@ -1,48 +1,117 @@
+:root {
+  --text: #000;
+  --background: #fff;
+  --secondary: #f2f3f5;
+  --secondary-dark: #cbd5e1;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #f9f6e7;
+    --background: #0f172a;
+    --primary: #006aff;
+    --secondary: #212c40;
+    --secondary-dark: #334155;
+  }
+  .statesBox img {
+    filter: invert(1);
+    border: 5px dashed #ccbeaa !important;
+  }
+}
+@media (min-width: 320px) and (max-width: 500px) {
+  form.state-input {
+    padding: 0 1.5rem !important;
+  }
+  .statesBox {
+    height: 36% !important;
+  }
+  .statesBox img {
+    max-height: 93%;
+    max-width: 93vw;
+  }
+  .inputs {
+    justify-content: center;
+  }
+  .guesses {
+    width: 100vw;
+  }
+  .guesses .guesses-input {
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+  .navbar {
+    width: 95%;
+  }
+  .navbar::after {
+    width: 90%;
+  }
+}
+@media (min-width: 768px) {
+  form.state-input {
+    width: 30vw !important;
+  }
+}
 html,
-body,
-#root {
-  height: 100%;
-  width: 100%;
+body {
+  height: 100vh;
+  width: 100vw;
+}
+
+body {
+  flex-direction: column;
+  background-color: var(--background);
 }
 
 .navbar {
   display: flex;
   justify-content: center;
+  position: relative;
   height: 5%;
+  width: 100%;
+  margin-bottom: 0.75rem;
+}
+.navbar::after {
+  content: "";
+  width: 100%;
+  height: 2.5px;
+  background-color: var(--text);
+  position: absolute;
+  top: 2.5rem;
 }
 .navbar header {
+  width: 100%;
+  color: var(--text);
   display: flex;
   align-items: center;
+  justify-content: space-between;
   font-size: 2rem;
-  gap: 5rem;
-}
-
-.navbar-hr {
-  border: none;
-  height: 2.5px;
-  background-color: #ccc;
 }
 
 .statesBox {
   height: 40%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
 }
 .statesBox img {
-  display: block;
-  margin: auto;
+  display: inline-block;
   height: 100%;
   width: auto;
-  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23333' stroke-width='5' stroke-dasharray='10%2c12' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+  border: 5px dashed var(--secondary-dark);
+  padding: 0.25rem;
 }
 
 .inputs {
   height: 50%;
   display: flex;
   flex-direction: column;
+  color: var(--text);
 }
 
 input.state-input,
 button.state-input {
-  border: #ccc 2px solid;
+  border: var(--secondary) 2px solid;
   font-size: 1.25rem;
   padding: 0.5rem;
   width: 25vw;
@@ -52,24 +121,27 @@ button.state-input {
 }
 
 button.state-input {
-  width: 8.75vw !important;
+  flex: 1;
   border-top-right-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
+  background-color: var(--secondary);
+  color: var(--text);
 }
-button.state-input:is(:hover, :focus) {
-  border: #999999 2px solid;
-  border-left: #ccc 2px solid;
+button.state-input:is(:hover, :focus, :active) {
+  border: var(--secondary-dark) 2px solid;
 }
 
 input.state-input {
+  flex: 3;
   width: 16.625vw !important;
   border-right: 0px;
   border-top-left-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
+  background-color: var(--background);
 }
-input.state-input:is(:hover, :focus) {
+input.state-input:is(:hover, :focus, :active) {
   outline: none;
-  border: #999999 2px solid;
+  border: var(--secondary-dark) 2px solid;
   border-right: 0px;
 }
 
@@ -87,15 +159,17 @@ form.state-input {
   gap: 0.5rem;
 }
 .guesses input {
-  border: #ccc 2px solid;
+  border: var(--secondary) 2px solid;
   font-size: 1.25rem;
   padding: 0.5rem;
   width: 25vw;
   border-radius: 0.25rem;
-  border: #ccc 2px dashed;
+  border: var(--secondary-dark) 2px dashed;
+  background-color: var(--secondary);
+  resize: horizontal;
 }
 
 .correct {
-  background-color: #419b45;
-  color: white;
+  background-color: #15803d !important;
+  color: #f9f6e7;
 }/*# sourceMappingURL=App.css.map */

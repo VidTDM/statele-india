@@ -8,7 +8,6 @@ function Navbar() {
                     <a href="" className="settings">⚙️</a>
                 </header>
             </div>
-            <hr className="navbar-hr" />
         </>
     );
 }

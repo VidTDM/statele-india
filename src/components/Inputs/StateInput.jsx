@@ -23,7 +23,7 @@ function StateInput({ state, setState, handleSumbit }) {
                 })}
             </datalist>
             <button type="submit" className="state-input">
-                🌏 Guess
+                Guess
             </button>
         </form>
     );
