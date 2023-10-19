@@ -1,12 +1,10 @@
 import { useState } from "react";
-// import Round1 from "./round1/Round1";
 import Round1 from "./round1/Round1";
 
 export default function Main({ ans }) {
     const [round, setRound] = useState(1);
     function handleCorrectInput() {
         setRound(() => {
-            console.log("handleCorrectInput");
             return round + 1;
         });
     }
@@ -20,6 +18,9 @@ export default function Main({ ans }) {
                 break;
 
             default:
+                jsx = (
+                    <p>This round is not here yet</p>
+                )
                 break;
         }
         return jsx;
