@@ -1,4 +1,4 @@
-import states_min from "../../data/states.min";
+import states_min from "../../../data/states.min";
 
 function StateInput({ state, setState, handleSumbit }) {
     return (
@@ -13,13 +13,13 @@ function StateInput({ state, setState, handleSumbit }) {
                 required
             />
             <datalist id="state-names">
-                {states_min.map((state_min) => {
+                {states_min.map((state_min, i) => {
                     const arr = state_min.replaceAll("_", " ").split(" ");
                     for (let i = 0; i < arr.length; i++)
                         arr[i] =
                             arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
                     const readableState = arr.join(" ");
-                    return <option value={readableState} />;
+                    return <option value={readableState} key={i} />;
                 })}
             </datalist>
             <button type="submit" className="state-input">

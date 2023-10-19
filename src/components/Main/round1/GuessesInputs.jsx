@@ -9,7 +9,6 @@ function toDeg(r) {
     return (r * 180) / Math.PI;
 }
 function stateObject(name, type) {
-    if (name == "") return "";
     const nameLowerCase = name.toLowerCase();
     if (
         states[
@@ -43,16 +42,24 @@ function GuessesInputs({
     guess6,
     ans,
     handleWrongInput,
+    handleCorrectInput,
 }) {
     function parseGuess(guess) {
+        if (guess == "") return "";
         const lat1 = stateObject(guess.replaceAll(" ", "_"), "lat"); // Guess | Y Axis
         const long1 = stateObject(guess.replaceAll(" ", "_"), "long"); // Guess | X Axis
-        const lat2 = stateObject(ans, "lat"); // Answer | Y Axis
-        const long2 = stateObject(ans, "long"); // Answer | X Axis
+        // const lat2 = stateObject(ans, "lat"); // Answer | Y Axis
+        const lat2 = ans.lat; // Answer | Y Axis
+        // const long2 = stateObject(ans, "long"); // Answer | X Axis
+        const long2 = ans.long; // Answer | X Axis
         if (lat1 == "wrong-input" && long1 == "wrong-input") handleWrongInput();
         if (typeof lat1 != "number" || typeof long1 != "number") return "";
-        if (lat1 == lat2 && long1 == long2)
-            return [`${guess.toUpperCase()} | 0 km | 🎉🎉🎉`, "correct"];
+        if (lat1 === lat2 && long1 === long2)
+            return [
+                `${guess.toUpperCase()} | 0 km | 🎉🎉🎉`,
+                "correct",
+                handleCorrectInput(),
+            ];
         // Calculate Distance
         const R = 6371; // km
         const x1 = lat2 - lat1;

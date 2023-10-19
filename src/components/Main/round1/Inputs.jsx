@@ -1,10 +1,10 @@
 import React, { useRef, useState } from "react";
 import StateInput from "./StateInput";
-import GuessesInputs from "./round1/GuessesInputs";
+import GuessesInputs from "./GuessesInputs";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-function Inputs({ ans }) {
+export default function Inputs({ ans, round, handleCorrectInput }) {
     const [state, setState] = useState("");
     const [guessNo, setGuessNo] = useState(1);
 
@@ -51,7 +51,7 @@ function Inputs({ ans }) {
             setGuessNo((currentGuessNo) => {
                 return currentGuessNo - 1;
             });
-            toast.error("State not found", {
+            toast.error("State/City not found", {
                 position: "top-center",
                 autoClose: 2500,
                 hideProgressBar: false,
@@ -73,6 +73,7 @@ function Inputs({ ans }) {
                     state={state}
                     setState={setState}
                     handleSumbit={handleSumbit}
+                    round={round}
                 />
                 <GuessesInputs
                     guess6={guess6}
@@ -83,6 +84,7 @@ function Inputs({ ans }) {
                     guess1={guess1}
                     ans={ans}
                     handleWrongInput={handleWrongInput}
+                    handleCorrectInput={handleCorrectInput}
                 />
             </div>
             <ToastContainer
@@ -101,5 +103,3 @@ function Inputs({ ans }) {
         </>
     );
 }
-
-export default Inputs;

@@ -3,7 +3,7 @@ function StatesBox({ ans }) {
         <>
             <div className="statesBox">
                 <img
-                    src={`https://raw.githubusercontent.com/VidTDM/statele-india/main/src/assets/${ans}.png`}
+                    src={`https://raw.githubusercontent.com/VidTDM/statele-india/main/src/assets/${ans.state}.png`}
                     alt="Mystery State"
                     loading="eager"
                     fetchpriority="high"
