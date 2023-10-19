@@ -2,8 +2,9 @@ function StatesBox({ ans }) {
     return (
         <>
             <div className="statesBox">
+            {/* prettier-ignore */}
                 <img
-                    src={`https://raw.githubusercontent.com/VidTDM/statele-india/main/src/assets/${ans.state}.png`}
+                    src={new URL(`../../../assets/${ans.state}.png`, import.meta.url).href}
                     alt="Mystery State"
                     loading="eager"
                     fetchpriority="high"
