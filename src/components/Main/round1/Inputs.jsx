@@ -4,7 +4,7 @@ import GuessesInputs from "./GuessesInputs";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function Inputs({ ans, round, handleCorrectInput }) {
+export default function Inputs({ ans, handleCorrectInput }) {
     const [state, setState] = useState("");
     const [guessNo, setGuessNo] = useState(1);
 
@@ -17,7 +17,7 @@ export default function Inputs({ ans, round, handleCorrectInput }) {
 
     const doWrongInput = useRef(0);
 
-    function handleSumbit(e) {
+    function handleSubmit(e) {
         e.preventDefault();
         setGuessNo((currentGuessNo) => {
             return currentGuessNo + 1;
@@ -41,29 +41,40 @@ export default function Inputs({ ans, round, handleCorrectInput }) {
                 break;
             case 6:
                 setGuess6(state);
+                const char_arr = ans.state.replaceAll("_", " ").split(" ");
+                for (let i = 0; i < char_arr.length; i++)
+                    char_arr[i] =
+                        char_arr[i].charAt(0).toUpperCase() +
+                        char_arr[i].slice(1);
+                const readableState = char_arr.join(" ");
+                toast.info(`${readableState} is the answer`, {
+                    position: "top-center",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    theme: "colored",
+                });
+                handleCorrectInput();
                 break;
         }
         setState("");
     }
     function handleWrongInput() {
-        if (doWrongInput.current == 0) {
-            console.error("WRONG INPUT");
-            setGuessNo((currentGuessNo) => {
-                return currentGuessNo - 1;
-            });
-            toast.error("State/City not found", {
-                position: "top-center",
-                autoClose: 2500,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "colored",
-            });
-        } else {
-            return;
-        }
+        if (doWrongInput.current != 0) return;
+        setGuessNo((currentGuessNo) => {
+            return currentGuessNo - 1;
+        });
+        toast.error("State/City not found", {
+            position: "top-center",
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            theme: "colored",
+        });
         doWrongInput.current++;
     }
     return (
@@ -72,8 +83,7 @@ export default function Inputs({ ans, round, handleCorrectInput }) {
                 <StateInput
                     state={state}
                     setState={setState}
-                    handleSumbit={handleSumbit}
-                    round={round}
+                    handleSubmit={handleSubmit}
                 />
                 <GuessesInputs
                     guess6={guess6}
@@ -89,7 +99,6 @@ export default function Inputs({ ans, round, handleCorrectInput }) {
             </div>
             <ToastContainer
                 position="top-center"
-                autoClose={2500}
                 limit={1}
                 hideProgressBar={false}
                 newestOnTop={false}

@@ -1,8 +1,8 @@
 import states_min from "../../../data/states.min";
 
-function StateInput({ state, setState, handleSumbit }) {
+function StateInput({ state, setState, handleSubmit }) {
     return (
-        <form className="state-input" onSubmit={handleSumbit}>
+        <form className="state-input" onSubmit={handleSubmit}>
             <input
                 type="text"
                 className="state-input"

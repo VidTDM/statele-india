@@ -1,7 +1,7 @@
-import Inputs from './round2/Inputs';
-import StatesBox from './round1/StatesBox';
+import Inputs from './Inputs';
+import StatesBox from './StatesBox';
 
-export default function Round2({ ans }) {
+export default function Round2({ ans, handleCorrectInput }) {
     return (
         <>
             <StatesBox ans={ans} />
