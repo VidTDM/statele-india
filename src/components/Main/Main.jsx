@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Round1 from "./round1/Round1";
 import Round2 from "./round2/Round2";
+import Round3 from "./round3/Round3";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -10,9 +11,7 @@ export default function Main({ ans }) {
         toast.info("Moving to next round", {
             position: "top-center",
             autoClose: 2000,
-            closeOnClick: true,
             pauseOnHover: true,
-            draggable: true,
             theme: "colored",
         });
         const timer = setTimeout(() => {
@@ -36,6 +35,11 @@ export default function Main({ ans }) {
                     <Round2 ans={ans} handleCorrectInput={handleCorrectInput} />
                 );
                 break;
+            case 3:
+                jsx = (
+                    <Round3 ans={ans} handleCorrectInput={handleCorrectInput} />
+                );
+                break;
             default:
                 jsx = <p>This round is not here yet</p>;
                 break;
@@ -49,10 +53,8 @@ export default function Main({ ans }) {
                 position="top-center"
                 limit={1}
                 newestOnTop={false}
-                closeOnClick
                 rtl={false}
                 pauseOnFocusLoss
-                draggable
                 pauseOnHover
                 theme="colored"
             />

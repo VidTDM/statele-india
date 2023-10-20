@@ -269,7 +269,7 @@ const states = [
         lat: 20,
         long: 84,
         neighbouring_states: [
-            "jharkand",
+            "jharkhand",
             "chhattisgarh",
             "andhra_pradesh",
             "west_bengal",

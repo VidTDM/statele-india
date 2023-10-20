@@ -4,9 +4,10 @@ import "./App.css";
 import Navbar from "./components/dumb/Navbar";
 import Main from "./components/Main/Main";
 import states from "./data/states";
+import shuffleArray from "shuffle-array";
 
 function App() {
-    const ans = useRef(states[Math.floor(Math.random() * states.length)]);
+    const ans = useRef(shuffleArray(states)[Math.floor(Math.random() * states.length)]);
     useDidMount(() => localStorage.setItem("ans", ans.current));
 
     return (

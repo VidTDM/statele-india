@@ -70,9 +70,7 @@ export default function Inputs({ ans, handleCorrectInput }) {
             position: "top-center",
             autoClose: 1000,
             hideProgressBar: false,
-            closeOnClick: true,
             pauseOnHover: true,
-            draggable: true,
             theme: "colored",
         });
         doWrongInput.current++;
@@ -102,10 +100,8 @@ export default function Inputs({ ans, handleCorrectInput }) {
                 limit={1}
                 hideProgressBar={false}
                 newestOnTop={false}
-                closeOnClick
                 rtl={false}
                 pauseOnFocusLoss
-                draggable
                 pauseOnHover
                 theme="colored"
             />
