@@ -1,9 +1,31 @@
+let jammuAndKashmirCapital;
+const d = new Date();
+switch (d.getMonth()) {
+    case 12:
+    case 1:
+    case 2:
+    case 9:
+    case 10:
+    case 11:
+        jammuAndKashmirCapital = "jammu";
+        break;
+    case 3:
+    case 4:
+    case 5:
+    case 6:
+    case 7:
+    case 8:
+        jammuAndKashmirCapital = "srinagar";
+        break;
+}
+
 const states = [
     {
         state: "andaman_and_nicobar_islands",
         lat: 10,
         long: 92,
         neighbouring_states: [],
+        capital_city: "port_blair",
     },
     {
         state: "andhra_pradesh",
@@ -17,12 +39,14 @@ const states = [
             "chhattisgarh",
             "puducherry",
         ],
+        capital_city: "amaravati",
     },
     {
         state: "arunachal_pradesh",
         lat: 28,
         long: 94,
         neighbouring_states: ["nagaland", "assam"],
+        capital_city: "itanagar",
     },
     {
         state: "assam",
@@ -37,18 +61,21 @@ const states = [
             "meghalaya",
             "west_bengal",
         ],
+        capital_city: "dispur",
     },
     {
         state: "bihar",
         lat: 25,
         long: 85,
         neighbouring_states: ["jharkhand", "uttar_pradesh", "west_bengal"],
+        capital_city: "patna",
     },
     {
         state: "chandigarh",
         lat: 33,
         long: 76,
         neighbouring_states: ["punjab", "haryana"],
+        capital_city: "chandigarh",
     },
     {
         state: "chhattisgarh",
@@ -63,24 +90,28 @@ const states = [
             "jharkhand",
             "uttar_pradesh",
         ],
+        capital_city: "raipur",
     },
     {
         state: "dadra_and_nagar_haveli_and_daman_and_diu",
         lat: 20,
         long: 73,
         neighbouring_states: ["gujarat", "maharashtra"],
+        capital_city: "daman",
     },
     {
         state: "delhi",
         lat: 28,
         long: 77,
         neighbouring_states: ["haryana", "uttar_pradesh"],
+        capital_city: "new_delhi",
     },
     {
         state: "goa",
         lat: 15,
         long: 74,
         neighbouring_states: ["maharashtra", "karnataka"],
+        capital_city: "panaji",
     },
     {
         state: "gujarat",
@@ -92,6 +123,7 @@ const states = [
             "rajasthan",
             "dadra_and_nagar_haveli_and_daman_and_diu",
         ],
+        capital_city: "gandhinagar",
     },
     {
         state: "haryana",
@@ -104,6 +136,7 @@ const states = [
             "punjab",
             "himachal_pradesh",
         ],
+        capital_city: "chandigarh",
     },
     {
         state: "himachal_pradesh",
@@ -117,12 +150,14 @@ const states = [
             "jammu_and_kashmir",
             "uttarakhand",
         ],
+        capital_city: "shimla",
     },
     {
         state: "jammu_and_kashmir",
         lat: 33,
         long: 75,
         neighbouring_states: ["ladakh", "punjab", "himachal_pradesh"],
+        capital_city: jammuAndKashmirCapital,
     },
     {
         state: "jharkhand",
@@ -136,6 +171,7 @@ const states = [
             "bihar",
             "west_bengal",
         ],
+        capital_city: "ranchi",
     },
     {
         state: "karnataka",
@@ -149,24 +185,28 @@ const states = [
             "andhra_pradesh",
             "telangana",
         ],
+        capital_city: "bengaluru",
     },
     {
         state: "kerala",
         lat: 10,
         long: 76,
         neighbouring_states: ["puducherry", "tamil_nadu", "karnataka"],
+        capital_city: "thiruvananthapuram", // also trivandrum/
     },
     {
         state: "ladakh",
         lat: 33,
         long: 77,
         neighbouring_states: ["jammu_and_kashmir", "himachal_pradesh"],
+        capital_city: "leh",
     },
     {
         state: "lakshadweep",
         lat: 10,
         long: 72,
         neighbouring_states: [],
+        capital_city: "kavaratti",
     },
     {
         state: "madhya_pradesh",
@@ -179,6 +219,7 @@ const states = [
             "uttar_pradesh",
             "chhattisgarh",
         ],
+        capital_city: "bhopal",
     },
     {
         state: "maharashtra",
@@ -193,30 +234,35 @@ const states = [
             "dadra_and_nagar_haveli_and_daman_and_diu",
             "gujarat",
         ],
+        capital_city: "mumbai",
     },
     {
         state: "manipur",
         lat: 24,
         long: 93,
         neighbouring_states: ["assam", "mizoram", "nagaland"],
+        capital_city: "imphal",
     },
     {
         state: "meghalaya",
         lat: 25,
         long: 91,
         neighbouring_states: ["assam"],
+        capital_city: "shillong",
     },
     {
         state: "mizoram",
         lat: 23,
         long: 92,
         neighbouring_states: ["assam", "tripura", "manipur"],
+        capital_city: "aizwal",
     },
     {
         state: "nagaland",
         lat: 26,
         long: 94,
         neighbouring_states: ["assam", "arunachal_pradesh"],
+        capital_city: "kohima",
     },
     {
         state: "odisha",
@@ -228,6 +274,7 @@ const states = [
             "andhra_pradesh",
             "west_bengal",
         ],
+        capital_city: "bhubaneswar",
     },
     {
         state: "punjab",
@@ -240,6 +287,7 @@ const states = [
             "chandigarh",
             "himachal_pradesh",
         ],
+        capital_city: "chandigarh",
     },
     {
         state: "rajasthan",
@@ -252,12 +300,14 @@ const states = [
             "punjab",
             "uttar_pradesh",
         ],
+        capital_city: "jaipur",
     },
     {
         state: "sikkim",
         lat: 27,
         long: 88,
         neighbouring_states: ["west_bengal"],
+        capital_city: "gangtok",
     },
     {
         state: "tamil_nadu",
@@ -269,6 +319,7 @@ const states = [
             "kerala",
             "andhra_pradesh",
         ],
+        capital_city: "chennai",
     },
     {
         state: "telangana",
@@ -280,18 +331,21 @@ const states = [
             "maharashtra",
             "chhattisgarh",
         ],
+        capital_city: "hyderabad",
     },
     {
         state: "tripura",
         lat: 23,
         long: 91,
         neighbouring_states: ["assam", "mizoram"],
+        capital_city: "agartala",
     },
     {
         state: "uttarakhand",
         lat: 30,
         long: 79,
         neighbouring_states: ["himachal_pradesh", "uttar_pradesh"],
+        capital_city: "dehradun",
     },
     {
         state: "uttar_pradesh",
@@ -308,6 +362,7 @@ const states = [
             "bihar",
             "himachal_pradesh",
         ],
+        capital_city: "lucknow",
     },
     {
         state: "west_bengal",
@@ -320,12 +375,14 @@ const states = [
             "sikkim",
             "assam",
         ],
+        capital_city: "kolkata",
     },
     {
         state: "puducherry",
         lat: 11,
         long: 79,
         neighbouring_states: ["andhra_pradesh", "kerala", "tamil_nadu"],
+        capital_city: "puducherry",
     },
 ];
 
