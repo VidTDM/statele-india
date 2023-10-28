@@ -12,7 +12,7 @@
 
 @media (prefers-color-scheme: dark)
     :root
-        --text: #f9f6e7
+        --text: #fffefe
         --background: #0f172a
         --primary: #006aff
         --secondary: #212c40
@@ -26,25 +26,18 @@
 @media (min-width: 320px) and (max-width: 500px)
     form.state-input
         padding: 0 1.5rem !important
-    .statesBox
-        height: 36% !important
-        img
-            max-height: 93%
-            max-width: 93vw
     .inputs
-        justify-content: center
-    .guesses
-        width: 100vw
-        .guesses-input
-            width: fit-content
-    .navbar
-        width: 95%
-        &::after
-            width: 90%
+        justify-content: center !important
+        align-items: stretch !important
+    .guesses .guesses-input
+        width: fit-content !important
 
 @media (min-width: 768px)
     form.state-input
         width: 30vw !important
+
+path
+    fill: var(--text)
 
 html,
 body
@@ -133,19 +126,57 @@ form.state-input
     display: flex
     flex-direction: column
     align-items: center
+    justify-content: center
     margin-bottom: .5rem
     gap: .5rem
+    overflow: hidden
+    resize: horizontal
+    padding: 1rem 0
+    padding: 0 1rem
     input
         @include input
         border-radius: .25rem
         border: var(--secondary-dark) 2px dashed
         background-color: var(--secondary)
         resize: horizontal
+        width: 100%
+
+.question-header
+    font-size: x-large
+    display: flex
+    justify-content: center
+.question-body
+    display: flex
+    gap: 1rem
+    flex-wrap: wrap
+    justify-content: center
+    & > .question-btn
+        flex: 0 0 calc(50% - 1rem)
+        color: var(--text)
+        background-color: var(--secondary)
+        transition: all 250ms
+        border: 2px solid var(--secondary)
+        &:not(:disabled):is(:hover, :focus)
+            background-color: var(--secondary-dark)
+            outline: none
+        &:disabled
+            pointer-events: none
+            filter: brightness(0.80)
+            border: 2px dashed var(--secondary-dark)
 
 .correct
     background-color: #15803d !important
-    color: #f9f6e7
+    color: #fffefe
+    border: 2px solid transparent !important
+    &:disabled
+        filter: brightness(1) !important
 
 .wrong
     background-color: #dc2626 !important
-    color: #f9f6e7
+    color: #fffefe
+    border: 2px solid transparent !important
+    &:disabled
+        filter: brightness(1) !important
+
+.congrats
+    font-size: 6vw

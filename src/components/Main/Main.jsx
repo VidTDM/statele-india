@@ -2,18 +2,28 @@ import { useState } from "react";
 import Round1 from "./round1/Round1";
 import Round2 from "./round2/Round2";
 import Round3 from "./round3/Round3";
+import Round4 from "./round4/Round4";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export default function Main({ ans }) {
     const [round, setRound] = useState(1);
     function handleCorrectInput() {
-        toast.info("Moving to next round", {
-            position: "top-center",
-            autoClose: 2000,
-            pauseOnHover: true,
-            theme: "colored",
-        });
+        if (round < 4) {
+            toast.info("Moving to next round", {
+                position: "top-center",
+                autoClose: 2000,
+                pauseOnHover: true,
+                theme: "colored",
+            });
+        } else {
+            toast.success("Congratulations you won!", {
+                position: "top-center",
+                autoClose: 2000,
+                pauseOnHover: true,
+                theme: "colored",
+            });
+        }
         const timer = setTimeout(() => {
             setRound(() => {
                 return round + 1;
@@ -40,8 +50,18 @@ export default function Main({ ans }) {
                     <Round3 ans={ans} handleCorrectInput={handleCorrectInput} />
                 );
                 break;
+            case 4:
+                jsx = (
+                    <Round4 ans={ans} handleCorrectInput={handleCorrectInput} />
+                );
+                break;
+            case 5:
+                jsx = (
+                    <p className="congrats">🎉 Congratulations You Won! 🎉</p>
+                );
+                break;
             default:
-                jsx = <p>This round is not here yet</p>;
+                jsx = <p>Congrats you broke the game :P</p>;
                 break;
         }
         return jsx;

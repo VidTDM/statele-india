@@ -19,30 +19,30 @@ export default function GuessesInputs({ guesses, ans, handleWrongInput }) {
             ? "correct"
             : "wrong";
     }
+    let guessesInputsNoArr = [];
+    // prettier-ignore
+    const guessesInputsNo =
+        Math.ceil(
+            ans.neighbouring_states.length * 2 -
+                ans.neighbouring_states.length / 2
+        ) <= 3
+        ? 3
+        : Math.ceil(
+            ans.neighbouring_states.length * 2 -
+            ans.neighbouring_states.length / 2
+        );
+    for (let i = 0; i < guessesInputsNo; i++) guessesInputsNoArr.push("");
     return (
         <div className="guesses">
-            {ans.neighbouring_states.map((a, i) => {
+            {guessesInputsNoArr.map((x, i) => {
                 return (
-                    <>
-                        <input
-                            type="text"
-                            className={`guesses-input ${parseGuess(
-                                guesses[2 * i]
-                            )}`}
-                            placeholder={`Guess ${2 * i + 1}`}
-                            disabled
-                            value={guesses[2 * i]}
-                        />
-                        <input
-                            type="text"
-                            className={`guesses-input ${parseGuess(
-                                guesses[2 * i + 1]
-                            )}`}
-                            placeholder={`Guess ${2 * i + 2}`}
-                            disabled
-                            value={guesses[2 * i + 1]}
-                        />
-                    </>
+                    <input
+                        type="text"
+                        className={`guesses-input ${parseGuess(guesses[i])}`}
+                        placeholder={`Guess ${i + 1}`}
+                        value={guesses[i]}
+                        disabled
+                    />
                 );
             })}
         </div>

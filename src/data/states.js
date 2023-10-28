@@ -40,6 +40,7 @@ const states = [
             "puducherry",
         ],
         capital_city: "amaravati",
+        longest_border: 'telangana'
     },
     {
         state: "arunachal_pradesh",
@@ -47,6 +48,7 @@ const states = [
         long: 94,
         neighbouring_states: ["nagaland", "assam"],
         capital_city: "itanagar",
+        longest_border: 'assam'
     },
     {
         state: "assam",
@@ -62,6 +64,7 @@ const states = [
             "west_bengal",
         ],
         capital_city: "dispur",
+        longest_border: 'arunachal_pradesh'
     },
     {
         state: "bihar",
@@ -69,6 +72,7 @@ const states = [
         long: 85,
         neighbouring_states: ["jharkhand", "uttar_pradesh", "west_bengal"],
         capital_city: "patna",
+        longest_border: 'uttar_pradesh'
     },
     {
         state: "chandigarh",
@@ -76,6 +80,7 @@ const states = [
         long: 76,
         neighbouring_states: ["punjab", "haryana"],
         capital_city: "chandigarh",
+        longest_border: "punjab"
     },
     {
         state: "chhattisgarh",
@@ -91,6 +96,7 @@ const states = [
             "uttar_pradesh",
         ],
         capital_city: "raipur",
+        longest_border: "odisha"
     },
     {
         state: "dadra_and_nagar_haveli_and_daman_and_diu",
@@ -98,6 +104,7 @@ const states = [
         long: 73,
         neighbouring_states: ["gujarat", "maharashtra"],
         capital_city: "daman",
+        longest_border: "gujarat"
     },
     {
         state: "delhi",
@@ -105,6 +112,7 @@ const states = [
         long: 77,
         neighbouring_states: ["haryana", "uttar_pradesh"],
         capital_city: "new_delhi",
+        longest_border: "haryana"
     },
     {
         state: "goa",
@@ -112,6 +120,7 @@ const states = [
         long: 74,
         neighbouring_states: ["maharashtra", "karnataka"],
         capital_city: "panaji",
+        longest_border: "karnataka"
     },
     {
         state: "gujarat",
@@ -124,6 +133,7 @@ const states = [
             "dadra_and_nagar_haveli_and_daman_and_diu",
         ],
         capital_city: "gandhinagar",
+        longest_border: "rajasthan"
     },
     {
         state: "haryana",
@@ -137,6 +147,7 @@ const states = [
             "himachal_pradesh",
         ],
         capital_city: "chandigarh",
+        longest_border: "punjab"
     },
     {
         state: "himachal_pradesh",
@@ -151,6 +162,7 @@ const states = [
             "uttarakhand",
         ],
         capital_city: "shimla",
+        longest_border: "jammu_and_kashmir"
     },
     {
         state: "jammu_and_kashmir",
@@ -158,6 +170,7 @@ const states = [
         long: 75,
         neighbouring_states: ["ladakh", "punjab", "himachal_pradesh"],
         capital_city: jammuAndKashmirCapital,
+        longest_border: 'ladakh'
     },
     {
         state: "jharkhand",
@@ -172,6 +185,7 @@ const states = [
             "west_bengal",
         ],
         capital_city: "ranchi",
+        longest_border: "bihar"
     },
     {
         state: "karnataka",
@@ -186,13 +200,15 @@ const states = [
             "telangana",
         ],
         capital_city: "bengaluru",
+        longest_border: "maharashtra"
     },
     {
         state: "kerala",
         lat: 10,
         long: 76,
         neighbouring_states: ["puducherry", "tamil_nadu", "karnataka"],
-        capital_city: "thiruvananthapuram", // also trivandrum/
+        capital_city: "thiruvananthapuram",
+        longest_border: "tamil_nadu"
     },
     {
         state: "ladakh",
@@ -200,6 +216,7 @@ const states = [
         long: 77,
         neighbouring_states: ["jammu_and_kashmir", "himachal_pradesh"],
         capital_city: "leh",
+        longest_border: "himachal_pradesh"
     },
     {
         state: "lakshadweep",
@@ -220,6 +237,7 @@ const states = [
             "chhattisgarh",
         ],
         capital_city: "bhopal",
+        longest_border: "uttar_pradesh"
     },
     {
         state: "maharashtra",
@@ -235,6 +253,7 @@ const states = [
             "gujarat",
         ],
         capital_city: "mumbai",
+        longest_border: "madhya_pradesh"
     },
     {
         state: "manipur",
@@ -242,6 +261,7 @@ const states = [
         long: 93,
         neighbouring_states: ["assam", "mizoram", "nagaland"],
         capital_city: "imphal",
+        longest_border: "nagaland"
     },
     {
         state: "meghalaya",
@@ -249,13 +269,15 @@ const states = [
         long: 91,
         neighbouring_states: ["assam"],
         capital_city: "shillong",
+        longest_border: "assam"
     },
     {
         state: "mizoram",
         lat: 23,
         long: 92,
         neighbouring_states: ["assam", "tripura", "manipur"],
-        capital_city: "aizwal",
+        capital_city: "aizawl",
+        longest_border: "tripura"
     },
     {
         state: "nagaland",
@@ -263,6 +285,7 @@ const states = [
         long: 94,
         neighbouring_states: ["assam", "arunachal_pradesh"],
         capital_city: "kohima",
+        longest_border: "assam"
     },
     {
         state: "odisha",
@@ -275,6 +298,7 @@ const states = [
             "west_bengal",
         ],
         capital_city: "bhubaneswar",
+        longest_border: "chhattisgarh"
     },
     {
         state: "punjab",
@@ -288,6 +312,7 @@ const states = [
             "himachal_pradesh",
         ],
         capital_city: "chandigarh",
+        longest_border: "jammu_and_kashmir"
     },
     {
         state: "rajasthan",
@@ -301,6 +326,7 @@ const states = [
             "uttar_pradesh",
         ],
         capital_city: "jaipur",
+        longest_border: "punjab"
     },
     {
         state: "sikkim",
@@ -308,6 +334,7 @@ const states = [
         long: 88,
         neighbouring_states: ["west_bengal"],
         capital_city: "gangtok",
+        longest_border: "west_bengal"
     },
     {
         state: "tamil_nadu",
@@ -320,6 +347,7 @@ const states = [
             "andhra_pradesh",
         ],
         capital_city: "chennai",
+        longest_border: "kerala"
     },
     {
         state: "telangana",
@@ -332,6 +360,7 @@ const states = [
             "chhattisgarh",
         ],
         capital_city: "hyderabad",
+        longest_border: 'andhra_pradesh'
     },
     {
         state: "tripura",
@@ -339,6 +368,7 @@ const states = [
         long: 91,
         neighbouring_states: ["assam", "mizoram"],
         capital_city: "agartala",
+        longest_border: 'mizoram'
     },
     {
         state: "uttarakhand",
@@ -346,6 +376,7 @@ const states = [
         long: 79,
         neighbouring_states: ["himachal_pradesh", "uttar_pradesh"],
         capital_city: "dehradun",
+        longest_border: 'himachal_pradesh'
     },
     {
         state: "uttar_pradesh",
@@ -363,6 +394,7 @@ const states = [
             "himachal_pradesh",
         ],
         capital_city: "lucknow",
+        longest_border: 'madhya_pradesh'
     },
     {
         state: "west_bengal",
@@ -376,6 +408,7 @@ const states = [
             "assam",
         ],
         capital_city: "kolkata",
+        longest_border: 'jharkhand'
     },
     {
         state: "puducherry",
@@ -383,6 +416,7 @@ const states = [
         long: 79,
         neighbouring_states: ["andhra_pradesh", "kerala", "tamil_nadu"],
         capital_city: "puducherry",
+        longest_border: "tamil_nadu"
     },
 ];
 

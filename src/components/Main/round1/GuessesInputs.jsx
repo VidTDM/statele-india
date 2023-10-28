@@ -46,17 +46,16 @@ function GuessesInputs({
 }) {
     function parseGuess(guess) {
         if (guess == "") return "";
+        const country = new Date().toString().split("(")[1].split(" ")[0];
         const lat1 = stateObject(guess.replaceAll(" ", "_"), "lat"); // Guess | Y Axis
         const long1 = stateObject(guess.replaceAll(" ", "_"), "long"); // Guess | X Axis
-        // const lat2 = stateObject(ans, "lat"); // Answer | Y Axis
         const lat2 = ans.lat; // Answer | Y Axis
-        // const long2 = stateObject(ans, "long"); // Answer | X Axis
         const long2 = ans.long; // Answer | X Axis
         if (lat1 == "wrong-input" && long1 == "wrong-input") handleWrongInput();
         if (typeof lat1 != "number" || typeof long1 != "number") return "";
         if (lat1 === lat2 && long1 === long2)
             return [
-                `${guess.toUpperCase()} | 0 km | 🎉🎉🎉`,
+                `${guess.toUpperCase()} | 0 | 🎉🎉🎉`,
                 "correct",
                 handleCorrectInput(),
             ];
@@ -73,7 +72,17 @@ function GuessesInputs({
                 Math.sin(dLong / 2) *
                 Math.sin(dLong / 2);
         const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        const d = Math.round(R * c);
+        let distance = Math.round(R * c);
+        if (
+            country == "United States Of America" ||
+            country == "Liberia" ||
+            country == "Myanmar"
+        ) {
+            distance *= 0.621371;
+            distance += "mi";
+        } else {
+            distance += "km";
+        }
         // Calculate Direction
         const dX = lat2 - lat1; // Ans - Guess
         const dY = long2 - long1; // Ans - Guess
@@ -88,7 +97,7 @@ function GuessesInputs({
                 )
             ];
 
-        return [`${guess.toUpperCase()} | ${d} km | ${direction}`, ""];
+        return [`${guess.toUpperCase()} | ${distance} | ${direction}`, ""];
     }
     return (
         <div className="guesses">

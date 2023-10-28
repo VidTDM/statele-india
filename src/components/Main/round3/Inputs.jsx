@@ -13,7 +13,11 @@ export default function Inputs({ ans, handleCorrectInput }) {
     const guessesSnakeCase = guesses.map((guess) => {
         return guess.replaceAll(" ", "_").toLowerCase();
     });
-    if (guessesSnakeCase.includes(ans.capital_city)) handleCorrectInput();
+    if (
+        guessesSnakeCase.includes(ans.capital_city) ||
+        guessesSnakeCase.length === 3
+    )
+        handleCorrectInput();
 
     function handleSubmit(e) {
         e.preventDefault();
