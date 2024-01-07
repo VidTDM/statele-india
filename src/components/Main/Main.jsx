@@ -10,14 +10,14 @@ export default function Main({ ans }) {
     const [round, setRound] = useState(1);
     function handleCorrectInput() {
         if (round < 4) {
-            toast.info("Moving to next round", {
+            toast.info("Moving to next round...", {
                 position: "top-center",
                 autoClose: 2000,
                 pauseOnHover: true,
                 theme: "colored",
             });
         } else {
-            toast.success("Congratulations you won!", {
+            toast.success("Showing Results...", {
                 position: "top-center",
                 autoClose: 2000,
                 pauseOnHover: true,
