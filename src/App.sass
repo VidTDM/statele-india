@@ -29,12 +29,18 @@
     .inputs
         justify-content: center !important
         align-items: stretch !important
-    .guesses .guesses-input
-        width: fit-content !important
+        width: 100% !important
+    .guesses
+        resize: none !important
+        .guesses-input
+            width: 100% !important
+            resize: none !important
 
 @media (min-width: 768px)
+    .inputs
+        min-width: 30vw
     form.state-input
-        width: 30vw !important
+        width: 100%
 
 path
     fill: var(--text)
@@ -87,6 +93,10 @@ body
     display: flex
     flex-direction: column
     color: var(--text)
+    resize: horizontal
+    & > *,
+    & > * > *
+        resize: horizontal
 
 input.state-input,
 button.state-input
@@ -121,6 +131,7 @@ form.state-input
     display: flex
     justify-content: center
 
+
 .guesses
     display: flex
     flex-direction: column
@@ -129,7 +140,6 @@ form.state-input
     margin-bottom: .5rem
     gap: .5rem
     overflow: hidden
-    resize: horizontal
     padding: 1rem 0
     padding: 0 1rem
     input
@@ -137,7 +147,6 @@ form.state-input
         border-radius: .25rem
         border: var(--secondary-dark) 2px dashed
         background-color: var(--secondary)
-        resize: horizontal
         width: 100%
 
 .question-header
@@ -179,3 +188,4 @@ form.state-input
 
 .congrats
     font-size: 6vw
+    height: 50svh
