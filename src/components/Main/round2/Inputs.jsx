@@ -10,12 +10,17 @@ export default function Inputs({ ans, handleCorrectInput }) {
     const [guesses, setGuesses] = useState([]);
     const doWrongInput = useRef(0);
 
-    const check = (arr, target) => target.every((v) => arr.includes(v));
-    const guessesSnakeCase = guesses.map((guess) => {
+    const check = (arr, target) => target.every(v => arr.includes(v));
+    const guessesSnakeCase = guesses.map(guess => {
         return guess.replaceAll(" ", "_").toLowerCase();
     });
+
+    const guessesInputsNo =
+        Math.ceil(ans.neighbouring_states.length * 2 - ans.neighbouring_states.length / 2) <= 3
+            ? 3
+            : Math.ceil(ans.neighbouring_states.length * 2 - ans.neighbouring_states.length / 2);
     if (
-        guessesSnakeCase.length === ans.neighbouring_states.length * 2 ||
+        guessesSnakeCase.length === guessesInputsNo ||
         check(guessesSnakeCase, ans.neighbouring_states)
     )
         handleCorrectInput();
@@ -26,9 +31,8 @@ export default function Inputs({ ans, handleCorrectInput }) {
         if (
             states[
                 states.findIndex(
-                    (stateObject) =>
-                        stateObject.state.toLowerCase() ==
-                        state.replaceAll(" ", "_").toLowerCase()
+                    stateObject =>
+                        stateObject.state.toLowerCase() == state.replaceAll(" ", "_").toLowerCase(),
                 )
             ] === undefined
         )
@@ -50,15 +54,12 @@ export default function Inputs({ ans, handleCorrectInput }) {
     return (
         <>
             <div className="inputs">
-                <StateInput
-                    state={state}
-                    setState={setState}
-                    handleSubmit={handleSubmit}
-                />
+                <StateInput state={state} setState={setState} handleSubmit={handleSubmit} />
                 <GuessesInputs
                     guesses={guesses}
                     ans={ans}
                     handleWrongInput={handleWrongInput}
+                    guessesInputsNo={guessesInputsNo}
                 />
             </div>
             <ToastContainer

@@ -1,13 +1,7 @@
-import { useMemo } from "react";
 import states from "../../../data/states";
 import { CardinalSubset, cardinalFromDegree } from "cardinal-direction";
+import { toRad, toDeg } from "../../../utils/math";
 
-function toRad(d) {
-    return (d * Math.PI) / 180;
-}
-function toDeg(r) {
-    return (r * 180) / Math.PI;
-}
 function stateObject(name, type) {
     const nameLowerCase = name.toLowerCase();
     if (
@@ -34,16 +28,12 @@ function stateObject(name, type) {
 }
 
 function GuessesInputs({
-    guess1,
-    guess2,
-    guess3,
-    guess4,
-    guess5,
-    guess6,
+    guesses,
     ans,
     handleWrongInput,
     handleCorrectInput,
 }) {
+    if (guesses.length >= 6) handleCorrectInput();
     function parseGuess(guess) {
         if (guess == "") return "";
         const country = new Date().toString().split("(")[1].split(" ")[0];
@@ -103,45 +93,45 @@ function GuessesInputs({
         <div className="guesses">
             <input
                 type="text"
-                className={`guesses-input guess-1 ${parseGuess(guess1)[1]}`}
+                className={`guesses-input ${parseGuess(guesses[0] ? guesses[0] : "")[1]}`}
                 placeholder="Guess 1"
                 disabled
-                value={useMemo(() => parseGuess(guess1)[0], [guess1])}
+                value={parseGuess(guesses[0] ? guesses[0] : "")[0]}
             />
             <input
                 type="text"
-                className={`guesses-input guess-2 ${parseGuess(guess2)[1]}`}
+                className={`guesses-input ${parseGuess(guesses[1] ? guesses[1] : "")[1]}`}
                 placeholder="Guess 2"
                 disabled
-                value={useMemo(() => parseGuess(guess2)[0], [guess2])}
+                value={parseGuess(guesses[1] ? guesses[1] : "")[0]}
             />
             <input
                 type="text"
-                className={`guesses-input guess-3 ${parseGuess(guess3)[1]}`}
+                className={`guesses-input ${parseGuess(guesses[2] ? guesses[2] : "")[1]}`}
                 placeholder="Guess 3"
                 disabled
-                value={useMemo(() => parseGuess(guess3)[0], [guess3])}
+                value={parseGuess(guesses[2] ? guesses[2] : "")[0]}
             />
             <input
                 type="text"
-                className={`guesses-input guess-4 ${parseGuess(guess4)[1]}`}
+                className={`guesses-input ${parseGuess(guesses[3] ? guesses[3] : "")[1]}`}
                 placeholder="Guess 4"
                 disabled
-                value={useMemo(() => parseGuess(guess4)[0], [guess4])}
+                value={parseGuess(guesses[3] ? guesses[3] : "")[0]}
             />
             <input
                 type="text"
-                className={`guesses-input guess-5 ${parseGuess(guess5)[1]}`}
+                className={`guesses-input ${parseGuess(guesses[4] ? guesses[4] : "")[1]}`}
                 placeholder="Guess 5"
                 disabled
-                value={useMemo(() => parseGuess(guess5)[0], [guess5])}
+                value={parseGuess(guesses[4] ? guesses[4] : "")[0]}
             />
             <input
                 type="text"
-                className={`guesses-input guess-6 ${parseGuess(guess6)[1]}`}
+                className={`guesses-input ${parseGuess(guesses[5] ? guesses[5] : "")[1]}`}
                 placeholder="Guess 6"
                 disabled
-                value={useMemo(() => parseGuess(guess6)[0], [guess6])}
+                value={parseGuess(guesses[5] ? guesses[5] : "")[0]}
             />
         </div>
     );
