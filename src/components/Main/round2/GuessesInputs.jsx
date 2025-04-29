@@ -5,32 +5,17 @@ export default function GuessesInputs({ guesses, ans, handleWrongInput }) {
         if (guess == undefined) return "";
         if (
             states[
-                states.findIndex(
-                    (state) =>
-                        state.state.toLowerCase() ==
-                        guess.replaceAll(" ", "_").toLowerCase()
-                )
+                states.findIndex((state) => state.state.toLowerCase() == guess.replaceAll(" ", "_").toLowerCase())
             ] == undefined
         )
             return handleWrongInput();
-        return ans.neighbouring_states.includes(
-            guess.replaceAll(" ", "_").toLowerCase()
-        )
-            ? "correct"
-            : "wrong";
+        return ans.neighbouring_states.includes(guess.replaceAll(" ", "_").toLowerCase()) ? "correct" : "wrong";
     }
     let guessesInputsNoArr = [];
-    // prettier-ignore
-    const guessesInputsNo =
-        Math.ceil(
-            ans.neighbouring_states.length * 2 -
-                ans.neighbouring_states.length / 2
-        ) <= 3
-        ? 3
-        : Math.ceil(
-            ans.neighbouring_states.length * 2 -
-            ans.neighbouring_states.length / 2
-        );
+    const guessesInputsNo = Math.max(
+        Math.ceil(ans.neighbouring_states.length * 2 - ans.neighbouring_states.length / 2),
+        3
+    );
     for (let i = 0; i < guessesInputsNo; i++) guessesInputsNoArr.push("");
     return (
         <div className="guesses">

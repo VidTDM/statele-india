@@ -4,7 +4,7 @@ import GuessesInputs from "./GuessesInputs";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function Inputs({ ans, handleCorrectInput }) {
+export default function Inputs({ ans, setRoundOver }) {
     const [state, setState] = useState("");
     const [guessNo, setGuessNo] = useState(1);
 
@@ -41,22 +41,7 @@ export default function Inputs({ ans, handleCorrectInput }) {
                 break;
             case 6:
                 setGuess6(state);
-                const char_arr = ans.state.replaceAll("_", " ").split(" ");
-                for (let i = 0; i < char_arr.length; i++)
-                    char_arr[i] =
-                        char_arr[i].charAt(0).toUpperCase() +
-                        char_arr[i].slice(1);
-                const readableState = char_arr.join(" ");
-                toast.info(`${readableState} is the answer`, {
-                    position: "top-center",
-                    autoClose: 2000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    theme: "colored",
-                });
-                handleCorrectInput();
+                setRoundOver(true);
                 break;
         }
         setState("");
@@ -78,11 +63,7 @@ export default function Inputs({ ans, handleCorrectInput }) {
     return (
         <>
             <div className="inputs">
-                <StateInput
-                    state={state}
-                    setState={setState}
-                    handleSubmit={handleSubmit}
-                />
+                <StateInput state={state} setState={setState} handleSubmit={handleSubmit} />
                 <GuessesInputs
                     guess6={guess6}
                     guess5={guess5}
@@ -92,7 +73,7 @@ export default function Inputs({ ans, handleCorrectInput }) {
                     guess1={guess1}
                     ans={ans}
                     handleWrongInput={handleWrongInput}
-                    handleCorrectInput={handleCorrectInput}
+                    setRoundOver={setRoundOver}
                 />
             </div>
             <ToastContainer

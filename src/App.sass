@@ -88,6 +88,7 @@ body
     display: flex
     flex-direction: column
     color: var(--text)
+    align-items: center
 
 input.state-input,
 button.state-input
@@ -165,9 +166,9 @@ form.state-input
             border: 2px dashed var(--secondary-dark)
 
 .correct
-    background-color: #15803d !important
+    background-color: #1aac4f !important
     color: #fffefe
-    border: 2px solid transparent !important
+    border: 2px dashed #15803d !important
     &:disabled
         filter: brightness(1) !important
 
@@ -180,3 +181,15 @@ form.state-input
 
 .congrats
     font-size: 6vw
+
+.roundEnd
+    display: flex
+    align-items: center
+    gap: 1rem
+    & > div
+        background-color: #0f0
+        padding: 0.5rem
+        border-radius: 0.25rem
+    & > button
+        background-color: var(--secondary)
+        border: 2px solid var(--secondary)

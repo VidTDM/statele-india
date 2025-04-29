@@ -10,40 +10,16 @@ function toDeg(r) {
 }
 function stateObject(name, type) {
     const nameLowerCase = name.toLowerCase();
-    if (
-        states[
-            states.findIndex(
-                (state) => state.state.toLowerCase() == nameLowerCase
-            )
-        ] == undefined
-    )
+    if (states[states.findIndex((state) => state.state.toLowerCase() == nameLowerCase)] == undefined)
         return "wrong-input";
     if (type == "lat") {
-        return states[
-            states.findIndex(
-                (state) => state.state.toLowerCase() == nameLowerCase
-            )
-        ].lat;
+        return states[states.findIndex((state) => state.state.toLowerCase() == nameLowerCase)].lat;
     } else if (type == "long") {
-        return states[
-            states.findIndex(
-                (state) => state.state.toLowerCase() == nameLowerCase
-            )
-        ].long;
+        return states[states.findIndex((state) => state.state.toLowerCase() == nameLowerCase)].long;
     }
 }
 
-function GuessesInputs({
-    guess1,
-    guess2,
-    guess3,
-    guess4,
-    guess5,
-    guess6,
-    ans,
-    handleWrongInput,
-    handleCorrectInput,
-}) {
+function GuessesInputs({ guess1, guess2, guess3, guess4, guess5, guess6, ans, handleWrongInput, setRoundOver }) {
     function parseGuess(guess) {
         if (guess == "") return "";
         const country = new Date().toString().split("(")[1].split(" ")[0];
@@ -54,11 +30,7 @@ function GuessesInputs({
         if (lat1 == "wrong-input" && long1 == "wrong-input") handleWrongInput();
         if (typeof lat1 != "number" || typeof long1 != "number") return "";
         if (lat1 === lat2 && long1 === long2)
-            return [
-                `${guess.toUpperCase()} | 0 | 🎉🎉🎉`,
-                "correct",
-                handleCorrectInput(),
-            ];
+            return [`${guess.toUpperCase()} | 0 | 🎉🎉🎉`, "correct", setRoundOver(true)];
         // Calculate Distance
         const R = 6371; // km
         const x1 = lat2 - lat1;
@@ -67,17 +39,10 @@ function GuessesInputs({
         const dLong = toRad(x2);
         const a =
             Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-            Math.cos(toRad(lat1)) *
-                Math.cos(toRad(lat2)) *
-                Math.sin(dLong / 2) *
-                Math.sin(dLong / 2);
+            Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLong / 2) * Math.sin(dLong / 2);
         const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         let distance = Math.round(R * c);
-        if (
-            country == "United States Of America" ||
-            country == "Liberia" ||
-            country == "Myanmar"
-        ) {
+        if (country == "United States Of America" || country == "Liberia" || country == "Myanmar") {
             distance *= 0.621371;
             distance += "mi";
         } else {
@@ -90,12 +55,7 @@ function GuessesInputs({
         const positiveDegrees = degrees >= 0 ? degrees : 360 + degrees;
         const emojis = ["↗️", "➡️", "↘️", "⬇️", "↙️", "⬅️", "↖️", "⬆️"];
         const directions = ["NE", "E", "SE", "S", "SW", "W", "NW", "N"];
-        const direction =
-            emojis[
-                directions.indexOf(
-                    cardinalFromDegree(positiveDegrees, CardinalSubset.Ordinal)
-                )
-            ];
+        const direction = emojis[directions.indexOf(cardinalFromDegree(positiveDegrees, CardinalSubset.Ordinal))];
 
         return [`${guess.toUpperCase()} | ${distance} | ${direction}`, ""];
     }

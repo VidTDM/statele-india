@@ -5,7 +5,7 @@ import cities from "../../../data/cities";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function Inputs({ ans, handleCorrectInput }) {
+export default function Inputs({ ans, setRoundOver }) {
     const [city, setCity] = useState("");
     const [guesses, setGuesses] = useState([]);
     const doWrongInput = useRef(0);
@@ -13,22 +13,14 @@ export default function Inputs({ ans, handleCorrectInput }) {
     const guessesSnakeCase = guesses.map((guess) => {
         return guess.replaceAll(" ", "_").toLowerCase();
     });
-    if (
-        guessesSnakeCase.includes(ans.capital_city) ||
-        guessesSnakeCase.length === 3
-    )
-        handleCorrectInput();
+    if (guessesSnakeCase.includes(ans.capital_city) || guessesSnakeCase.length === 3) setRoundOver(true);
 
     function handleSubmit(e) {
         e.preventDefault();
         doWrongInput.current = 0;
         if (
             cities[
-                cities.findIndex(
-                    (list_city) =>
-                        list_city.toLowerCase() ==
-                        city.replaceAll(" ", "_").toLowerCase()
-                )
+                cities.findIndex((list_city) => list_city.toLowerCase() == city.replaceAll(" ", "_").toLowerCase())
             ] === undefined
         )
             handleWrongInput();
@@ -49,16 +41,8 @@ export default function Inputs({ ans, handleCorrectInput }) {
     return (
         <>
             <div className="inputs">
-                <StateInput
-                    city={city}
-                    setCity={setCity}
-                    handleSubmit={handleSubmit}
-                />
-                <GuessesInputs
-                    guesses={guesses}
-                    ans={ans}
-                    handleWrongInput={handleWrongInput}
-                />
+                <StateInput city={city} setCity={setCity} handleSubmit={handleSubmit} />
+                <GuessesInputs guesses={guesses} ans={ans} handleWrongInput={handleWrongInput} />
             </div>
             <ToastContainer
                 position="top-center"

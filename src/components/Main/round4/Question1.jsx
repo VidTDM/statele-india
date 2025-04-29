@@ -5,15 +5,10 @@ import shuffleArray from "shuffle-array";
 export default function Question1({ ans, handleCorrectInput }) {
     const [gameEnded, setGameEnded] = useState(false);
     const optionRefs = ans.neighbouring_states.map(() => useRef(null));
-    const shuffledStates = useMemo(
-        () => shuffleArray(ans.neighbouring_states),
-        [ans.neighbouring_states]
-    );
+    const shuffledStates = useMemo(() => shuffleArray(ans.neighbouring_states), [ans.neighbouring_states]);
 
     function handleOptionSelect(i) {
-        const correctOptionIndex = ans.neighbouring_states.findIndex(
-            (state) => state === ans.longest_border
-        );
+        const correctOptionIndex = ans.neighbouring_states.findIndex((state) => state === ans.longest_border);
         if (i === correctOptionIndex) {
             setGameEnded(true);
             optionRefs[i].current.classList.add("correct");
@@ -24,8 +19,7 @@ export default function Question1({ ans, handleCorrectInput }) {
     }
     function makeReadable(str) {
         const arr = str.replaceAll("_", " ").split(" ");
-        for (let i = 0; i < arr.length; i++)
-            arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
+        for (let i = 0; i < arr.length; i++) arr[i] = arr[i].charAt(0).toUpperCase() + arr[i].slice(1);
         const readableStr = arr.join(" ");
         return readableStr;
     }
@@ -33,7 +27,7 @@ export default function Question1({ ans, handleCorrectInput }) {
         <div className="question">
             <div className="question-header">
                 <Length />
-                What is longest border of {makeReadable(ans.state)}?
+                What is the longest border of {makeReadable(ans.state)}?
             </div>
             <div className="question-body">
                 {shuffledStates.map((state, i) => {

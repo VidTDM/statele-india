@@ -5,7 +5,7 @@ import states from "../../../data/states";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function Inputs({ ans, handleCorrectInput }) {
+export default function Inputs({ ans, setRoundOver }) {
     const [state, setState] = useState("");
     const [guesses, setGuesses] = useState([]);
     const doWrongInput = useRef(0);
@@ -18,7 +18,7 @@ export default function Inputs({ ans, handleCorrectInput }) {
         guessesSnakeCase.length === ans.neighbouring_states.length * 2 ||
         check(guessesSnakeCase, ans.neighbouring_states)
     )
-        handleCorrectInput();
+        setRoundOver(true);
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -26,9 +26,7 @@ export default function Inputs({ ans, handleCorrectInput }) {
         if (
             states[
                 states.findIndex(
-                    (stateObject) =>
-                        stateObject.state.toLowerCase() ==
-                        state.replaceAll(" ", "_").toLowerCase()
+                    (stateObject) => stateObject.state.toLowerCase() == state.replaceAll(" ", "_").toLowerCase()
                 )
             ] === undefined
         )
@@ -50,16 +48,8 @@ export default function Inputs({ ans, handleCorrectInput }) {
     return (
         <>
             <div className="inputs">
-                <StateInput
-                    state={state}
-                    setState={setState}
-                    handleSubmit={handleSubmit}
-                />
-                <GuessesInputs
-                    guesses={guesses}
-                    ans={ans}
-                    handleWrongInput={handleWrongInput}
-                />
+                <StateInput state={state} setState={setState} handleSubmit={handleSubmit} />
+                <GuessesInputs guesses={guesses} ans={ans} handleWrongInput={handleWrongInput} />
             </div>
             <ToastContainer
                 position="top-center"
