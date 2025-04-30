@@ -1,3 +1,6 @@
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 export default function RoundEnd({ ans, round, setRound }) {
     function handleClick() {
         setRound(() => {
@@ -17,6 +20,7 @@ export default function RoundEnd({ ans, round, setRound }) {
             </div>
             <button onClick={handleClick} className="nextRound">
                 Next Round
+                <FontAwesomeIcon icon={faChevronRight} />
             </button>
         </div>
     );

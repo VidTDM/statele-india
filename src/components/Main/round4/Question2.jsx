@@ -1,16 +1,16 @@
 import { useMemo, useRef } from "react";
 import shuffleArray from "shuffle-array";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRulerHorizontal } from "@fortawesome/free-solid-svg-icons";
+import { faGlobeAsia } from "@fortawesome/free-solid-svg-icons";
 
-export default function Question1({ ans, handleCorrectInput, gameEnded, setGameEnded }) {
-    const optionRefs = ans.neighbouring_states.map(() => useRef(null));
-    const shuffledStates = useMemo(() => shuffleArray(ans.neighbouring_states), [ans.neighbouring_states]);
+export default function Question2({ ans, handleCorrectInput, gameEnded1, setGameEnded1 }) {
+    let shuffledOptions = useMemo(() => shuffleArray(ans.area_options), [ans.area_options]);
+    const optionRefs = ans.area_options.map(() => useRef(null));
 
     function handleOptionSelect(i) {
-        const correctOptionIndex = ans.neighbouring_states.findIndex((state) => state === ans.longest_border);
+        const correctOptionIndex = ans.area_options.findIndex((area) => area == ans.area);
         if (i === correctOptionIndex) {
-            setGameEnded(true);
+            setGameEnded1(true);
             optionRefs[i].current.classList.add("correct");
             handleCorrectInput();
         } else {
@@ -26,20 +26,20 @@ export default function Question1({ ans, handleCorrectInput, gameEnded, setGameE
     return (
         <div className="question">
             <div className="question-header">
-                <FontAwesomeIcon icon={faRulerHorizontal} />
-                What is the longest border of {makeReadable(ans.state)}?
+                <FontAwesomeIcon icon={faGlobeAsia} />
+                What is the area of {makeReadable(ans.state)}?
             </div>
             <div className="question-body">
-                {shuffledStates.map((state, i) => {
+                {shuffledOptions.map((area, i) => {
                     return (
                         <button
                             type="button"
                             className="question-btn"
                             ref={optionRefs[i]}
                             onClick={() => handleOptionSelect(i)}
-                            disabled={gameEnded}
+                            disabled={gameEnded1}
                         >
-                            {makeReadable(state)}
+                            {area}km
                         </button>
                     );
                 })}

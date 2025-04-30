@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import useDidMount from "./utils/useDidMount";
 import "./App.css";
-import Navbar from "./components/dumb/Navbar";
+import Navbar from "./components/Navbar";
 import Main from "./components/Main/Main";
 import states from "./data/states";
 import shuffleArray from "shuffle-array";

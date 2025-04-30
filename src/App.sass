@@ -9,6 +9,10 @@
     --background: #fff
     --secondary: #f2f3f5
     --secondary-dark: #cbd5e1
+    --correct: #15803d
+    --wrong: #dc2626
+    --correct-light: #22ce62
+    --wrong-light: #e14747
 
 @media (prefers-color-scheme: dark)
     :root
@@ -146,6 +150,9 @@ form.state-input
     font-size: x-large
     display: flex
     justify-content: center
+    svg
+        margin: 0.5rem
+
 .question-body
     display: flex
     gap: 1rem
@@ -165,17 +172,20 @@ form.state-input
             filter: brightness(0.80)
             border: 2px dashed var(--secondary-dark)
 
+.question + .question
+    margin-top: 1rem
+
 .correct
-    background-color: #1aac4f !important
+    background-color: var(--correct-light) !important
     color: #fffefe
-    border: 2px dashed #15803d !important
+    border: 2px dashed var(--correct) !important
     &:disabled
         filter: brightness(1) !important
 
 .wrong
-    background-color: #dc2626 !important
+    background-color: var(--wrong-light) !important
     color: #fffefe
-    border: 2px solid transparent !important
+    border: 2px dashed var(--wrong) !important
     &:disabled
         filter: brightness(1) !important
 
@@ -186,6 +196,7 @@ form.state-input
     display: flex
     align-items: center
     gap: 1rem
+    margin-bottom: 1em
     & > div
         background-color: #0f0
         padding: 0.5rem
@@ -193,3 +204,13 @@ form.state-input
     & > button
         background-color: var(--secondary)
         border: 2px solid var(--secondary)
+        svg
+            margin-left: 0.5rem
+
+.round
+    background-color: var(--secondary-dark)
+    padding: 0.5rem
+    border-radius: 0.25rem
+    margin-bottom: 1rem
+    svg
+        margin-right: 0.25rem
