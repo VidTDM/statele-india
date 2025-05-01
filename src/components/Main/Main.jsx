@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Round5 from "./round5/Round5";
 
 export default function Main({ ans }) {
-    const [round, setRound] = useState(4);
+    const [round, setRound] = useState(1);
     function checkRound(round) {
         let jsx;
         switch (round) {
