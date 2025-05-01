@@ -6,6 +6,7 @@ import StatesBox from "../round1/StatesBox";
 import RoundEnd from "./RoundEnd";
 
 export default function Round4({ ans, handleCorrectInput, round, setRound }) {
+    useDidMount(() => (document.title = "Statele - Spoken Languages"));
     const [roundOver, setRoundOver] = useState(false);
     return (
         <>
