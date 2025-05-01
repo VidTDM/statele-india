@@ -1,6 +1,6 @@
 import states from "../../../data/states";
 
-export default function GuessesInputs({ guesses, ans, handleWrongInput }) {
+export default function GuessesInputs({ guesses, ans, handleWrongInput, guessesInputsNo }) {
     function parseGuess(guess) {
         if (guess == undefined) return "";
         if (
@@ -12,10 +12,6 @@ export default function GuessesInputs({ guesses, ans, handleWrongInput }) {
         return ans.neighbouring_states.includes(guess.replaceAll(" ", "_").toLowerCase()) ? "correct" : "wrong";
     }
     let guessesInputsNoArr = [];
-    const guessesInputsNo = Math.max(
-        Math.ceil(ans.neighbouring_states.length * 2 - ans.neighbouring_states.length / 2),
-        3
-    );
     for (let i = 0; i < guessesInputsNo; i++) guessesInputsNoArr.push("");
     return (
         <div className="guesses">

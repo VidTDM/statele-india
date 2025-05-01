@@ -3,11 +3,12 @@ import Round1 from "./round1/Round1";
 import Round2 from "./round2/Round2";
 import Round3 from "./round3/Round3";
 import Round4 from "./round4/Round4";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Round5 from "./round5/Round5";
 
 export default function Main({ ans }) {
-    const [round, setRound] = useState(1);
+    const [round, setRound] = useState(4);
     function checkRound(round) {
         let jsx;
         switch (round) {
@@ -21,9 +22,12 @@ export default function Main({ ans }) {
                 jsx = <Round3 ans={ans} round={round} setRound={setRound} />;
                 break;
             case 4:
-                jsx = <Round4 ans={ans} />;
+                jsx = <Round4 ans={ans} round={round} setRound={setRound} />;
                 break;
             case 5:
+                jsx = <Round5 ans={ans} />;
+                break;
+            case 6:
                 jsx = <p className="congrats">🎉 Congratulations You Won! 🎉</p>;
                 break;
             default:

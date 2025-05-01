@@ -7,9 +7,8 @@ import states from "./data/states";
 import shuffleArray from "shuffle-array";
 
 function App() {
-    const ans = useRef(shuffleArray(states)[Math.floor(Math.random() * states.length)]);
+    const ans = useRef(shuffleArray.pick(shuffleArray(states)));
     useDidMount(() => localStorage.setItem("ans", ans.current));
-
     return (
         <>
             <Navbar />

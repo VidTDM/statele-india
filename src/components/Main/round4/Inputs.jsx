@@ -1,42 +1,35 @@
 import React, { useRef, useState } from "react";
-import StateInput from "../round1/StateInput";
+import LanguageInput from "./LanguageInput";
 import GuessesInputs from "./GuessesInputs";
-import states from "../../../data/states";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import languages from "../../../data/languages";
 
-export default function Inputs({ ans, setRoundOver, guesses, setGuesses }) {
-    const guessesInputsNo = Math.max(
-        Math.ceil(ans.neighbouring_states.length * 2 - ans.neighbouring_states.length / 2),
-        3
-    );
-    const [state, setState] = useState("");
+export default function Inputs({ ans, setRoundOver }) {
+    const [lang, setLang] = useState("");
+    const [guesses, setGuesses] = useState([]);
     const doWrongInput = useRef(0);
 
     const check = (arr, target) => target.every((v) => arr.includes(v));
     const guessesSnakeCase = guesses.map((guess) => {
         return guess.replaceAll(" ", "_").toLowerCase();
     });
-    if (guessesSnakeCase.length === guessesInputsNo || check(guessesSnakeCase, ans.neighbouring_states))
-        setRoundOver(true);
+    if (guessesSnakeCase.length === 4 || check(guessesSnakeCase, ans.languages)) setRoundOver(true);
 
     function handleSubmit(e) {
         e.preventDefault();
         doWrongInput.current = 0;
         if (
-            states[
-                states.findIndex(
-                    (stateObject) => stateObject.state.toLowerCase() == state.replaceAll(" ", "_").toLowerCase()
-                )
-            ] === undefined
+            languages[languages.findIndex((l) => l.toLowerCase() == lang.replaceAll(" ", "_").toLowerCase())] ==
+            undefined
         )
-            handleWrongInput();
-        else setGuesses([...guesses, state.toUpperCase()]);
-        setState("");
+            return handleWrongInput();
+        else setGuesses([...guesses, lang.toUpperCase()]);
+        setLang("");
     }
     function handleWrongInput() {
         if (!doWrongInput.current == 0) return;
-        toast.error("State/City not found", {
+        toast.error("Language not found", {
             position: "top-center",
             autoClose: 2500,
             hideProgressBar: false,
@@ -48,13 +41,8 @@ export default function Inputs({ ans, setRoundOver, guesses, setGuesses }) {
     return (
         <>
             <div className="inputs">
-                <StateInput state={state} setState={setState} handleSubmit={handleSubmit} />
-                <GuessesInputs
-                    guesses={guesses}
-                    ans={ans}
-                    handleWrongInput={handleWrongInput}
-                    guessesInputsNo={guessesInputsNo}
-                />
+                <LanguageInput lang={lang} setLang={setLang} handleSubmit={handleSubmit} />
+                <GuessesInputs guesses={guesses} ans={ans} handleWrongInput={handleWrongInput} />
             </div>
             <ToastContainer
                 position="top-center"

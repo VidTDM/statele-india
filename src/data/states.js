@@ -29,6 +29,7 @@ const states = [
         longest_border: "tamil_nadu",
         area: 8249,
         area_options: [12077, 8249, 5673, 9163],
+        languages: ["bengali", "tamil"],
     },
     {
         state: "andhra_pradesh",
@@ -39,6 +40,7 @@ const states = [
         longest_border: "telangana",
         area: 162970,
         area_options: [55673, 103483, 162970, 208249],
+        languages: ["telugu", "urdu"],
     },
     {
         state: "arunachal_pradesh",
@@ -49,6 +51,7 @@ const states = [
         longest_border: "assam",
         area: 83743,
         area_options: [53483, 101791, 83743, 45479],
+        languages: ["nishi", "adi"],
     },
     {
         state: "assam",
@@ -67,6 +70,7 @@ const states = [
         longest_border: "meghalaya",
         area: 78438,
         area_options: [94163, 144486, 78438, 22327],
+        languages: ["assamese", "bengali"],
     },
     {
         state: "bihar",
@@ -77,6 +81,7 @@ const states = [
         longest_border: "uttar_pradesh",
         area: 94163,
         area_options: [108350, 201429, 50362, 94163],
+        languages: ["bihari", "maithili"],
     },
     {
         state: "chandigarh",
@@ -87,6 +92,7 @@ const states = [
         longest_border: "punjab",
         area: 114,
         area_options: [155, 307, 114, 165],
+        languages: ["hindi", "punjabi"],
     },
     {
         state: "chhattisgarh",
@@ -105,6 +111,7 @@ const states = [
         longest_border: "odisha",
         area: 135192,
         area_options: [196024, 135192, 83743, 73924],
+        languages: ["hindi", "odia"],
     },
     {
         state: "dadra_and_nagar_haveli_and_daman_and_diu",
@@ -115,6 +122,7 @@ const states = [
         longest_border: "gujarat",
         area: 603,
         area_options: [162, 358, 732, 603],
+        languages: ["gujarati", "hindi"],
     },
     {
         state: "delhi",
@@ -125,6 +133,7 @@ const states = [
         longest_border: "haryana",
         area: 1484,
         area_options: [1484, 1305, 1213, 896],
+        languages: ["hindi", "punjabi"],
     },
     {
         state: "goa",
@@ -135,6 +144,7 @@ const states = [
         longest_border: "karnataka",
         area: 3702,
         area_options: [10076, 1603, 3702, 23483],
+        languages: ["konkani", "marathi"],
     },
     {
         state: "gujarat",
@@ -145,6 +155,7 @@ const states = [
         longest_border: "rajasthan",
         area: 196024,
         area_options: [83743, 196024, 204486, 102212],
+        languages: ["gujarati", "hindi"],
     },
     {
         state: "haryana",
@@ -155,6 +166,7 @@ const states = [
         longest_border: "rajasthan",
         area: 44212,
         area_options: [25707, 55673, 38852, 44212],
+        languages: ["hindi", "haryanvi"],
     },
     {
         state: "himachal_pradesh",
@@ -165,6 +177,7 @@ const states = [
         longest_border: "punjab",
         area: 55673,
         area_options: [36579, 55673, 22327, 74013],
+        languages: ["pahari", "punjabi"],
     },
     {
         state: "jammu_and_kashmir",
@@ -175,6 +188,7 @@ const states = [
         longest_border: "ladakh",
         area: 42241,
         area_options: [61579, 55238, 42241, 80486],
+        languages: ["kashmiri", "dogri"],
     },
     {
         state: "jharkhand",
@@ -185,6 +199,7 @@ const states = [
         longest_border: "bihar",
         area: 79714,
         area_options: [79714, 94163, 116024, 62239],
+        languages: ["bihari", "santali"],
     },
     {
         state: "karnataka",
@@ -195,6 +210,7 @@ const states = [
         longest_border: "maharashtra",
         area: 191791,
         area_options: [109146, 202239, 191791, 155707],
+        languages: ["kannada", "telugu"],
     },
     {
         state: "kerala",
@@ -205,6 +221,7 @@ const states = [
         longest_border: "tamil_nadu",
         area: 38852,
         area_options: [38852, 21087, 88350, 49028],
+        languages: ["malayalam", "tamil"],
     },
     {
         state: "ladakh",
@@ -215,6 +232,7 @@ const states = [
         longest_border: "himachal_pradesh",
         area: 59146,
         area_options: [83743, 59146, 39702, 62950],
+        languages: ["ladakhi", "purgi"],
     },
     {
         state: "lakshadweep",
@@ -225,6 +243,7 @@ const states = [
         longest_border: "kerala",
         area: 32,
         area_options: [41, 52, 20, 32],
+        languages: ["malayalam", "dhivehi"],
     },
     {
         state: "madhya_pradesh",
@@ -235,6 +254,7 @@ const states = [
         longest_border: "uttar_pradesh",
         area: 308350,
         area_options: [114298, 230058, 308350, 401243],
+        languages: ["hindi", "marathi"],
     },
     {
         state: "maharashtra",
@@ -253,6 +273,7 @@ const states = [
         longest_border: "madhya_pradesh",
         area: 307713,
         area_options: [307713, 278259, 155707, 213987],
+        languages: ["marathi", "hindi"],
     },
     {
         state: "manipur",
@@ -263,6 +284,7 @@ const states = [
         longest_border: "assam",
         area: 22327,
         area_options: [83742, 12077, 22327, 96024],
+        languages: ["meitei", "nepali"],
     },
     {
         state: "meghalaya",
@@ -273,6 +295,7 @@ const states = [
         longest_border: "assam",
         area: 22429,
         area_options: [18249, 22429, 30058, 53483],
+        languages: ["khasi", "garo"],
     },
     {
         state: "mizoram",
@@ -283,6 +306,7 @@ const states = [
         longest_border: "assam",
         area: 21087,
         area_options: [18290, 83743, 21087, 36604],
+        languages: ["mizo", "english"],
     },
     {
         state: "nagaland",
@@ -293,6 +317,7 @@ const states = [
         longest_border: "assam",
         area: 16579,
         area_options: [14484, 16579, 36502, 21791],
+        languages: ["naga", "english"],
     },
     {
         state: "odisha",
@@ -303,6 +328,7 @@ const states = [
         longest_border: "chhattisgarh",
         area: 155707,
         area_options: [155707, 55238, 210083, 147933],
+        languages: ["odia", "santali"],
     },
     {
         state: "punjab",
@@ -313,6 +339,7 @@ const states = [
         longest_border: "haryana",
         area: 50362,
         area_options: [21087, 50362, 62239, 38350],
+        languages: ["punjab", "hindi"],
     },
     {
         state: "rajasthan",
@@ -323,6 +350,7 @@ const states = [
         longest_border: "madhya_pradesh",
         area: 342239,
         area_options: [434238, 342239, 291791, 153483],
+        languages: ["rajasthani", "punjabi"],
     },
     {
         state: "sikkim",
@@ -333,6 +361,7 @@ const states = [
         longest_border: "west_bengal",
         area: 7096,
         area_options: [14928, 7096, 12077, 3702],
+        languages: ["nepali", "hindi"],
     },
     {
         state: "tamil_nadu",
@@ -343,6 +372,7 @@ const states = [
         longest_border: "kerala",
         area: 130058,
         area_options: [109479, 130058, 169024, 121087],
+        languages: ["tamil", "malayalam"],
     },
     {
         state: "telangana",
@@ -353,6 +383,7 @@ const states = [
         longest_border: "maharasthra",
         area: 112077,
         area_options: [79714, 91087, 112077, 130350],
+        languages: ["telugu", "urdu"],
     },
     {
         state: "tripura",
@@ -363,6 +394,7 @@ const states = [
         longest_border: "mizoram",
         area: 10486,
         area_options: [6603, 14714, 10486, 16249],
+        languages: ["bengali", "kokborok"],
     },
     {
         state: "uttarakhand",
@@ -373,6 +405,7 @@ const states = [
         longest_border: "uttar_pradesh",
         area: 53483,
         area_options: [53283, 61479, 46603, 59146],
+        languages: ["pahari", "urdu"],
     },
     {
         state: "uttar_pradesh",
@@ -393,6 +426,7 @@ const states = [
         longest_border: "madhya_pradesh",
         area: 240928,
         area_options: [240928, 130056, 257095, 100294],
+        languages: ["hindi", "urdu"],
     },
     {
         state: "west_bengal",
@@ -403,6 +437,7 @@ const states = [
         longest_border: "jharkhand",
         area: 88752,
         area_options: [115707, 88752, 42928, 62429],
+        languages: ["bengali", "urdu"],
     },
     {
         state: "puducherry",
@@ -413,6 +448,7 @@ const states = [
         longest_border: "tamil_nadu",
         area: 479,
         area_options: [791, 479, 557, 623],
+        languages: ["tamil", "telugu"],
     },
 ];
 

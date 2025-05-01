@@ -1,36 +1,21 @@
-import useDidMount from "../../../utils/useDidMount";
-import { useState } from "react";
-import Question1 from "./Question1";
-import Question2 from "./Question2";
+import { faLanguage } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClipboardQuestion } from "@fortawesome/free-solid-svg-icons";
+import Inputs from "./Inputs";
+import { useState } from "react";
+import StatesBox from "../round1/StatesBox";
+import RoundEnd from "./RoundEnd";
 
-export default function Round4({ ans, handleCorrectInput }) {
-    useDidMount(() => (document.title = "Statele - Quiz"));
-    const [gameEnded, setGameEnded] = useState(false);
-    const [gameEnded1, setGameEnded1] = useState(false);
+export default function Round4({ ans, handleCorrectInput, round, setRound }) {
+    const [roundOver, setRoundOver] = useState(false);
     return (
         <>
             <div className="round">
-                <FontAwesomeIcon icon={faClipboardQuestion} />
-                <span>Quiz</span>
+                <FontAwesomeIcon icon={faLanguage} />
+                <span>Guess the Spoken Languages</span>
             </div>
-            <Question1
-                ans={ans}
-                handleCorrectInput={handleCorrectInput}
-                gameEnded={gameEnded}
-                setGameEnded={setGameEnded}
-            />
-            {gameEnded ? (
-                <Question2
-                    ans={ans}
-                    handleCorrectInput={handleCorrectInput}
-                    gameEnded1={gameEnded1}
-                    setGameEnded1={setGameEnded1}
-                />
-            ) : (
-                ""
-            )}
+            <StatesBox ans={ans} />
+            <Inputs ans={ans} handleCorrectInput={handleCorrectInput} setRoundOver={setRoundOver} />
+            {roundOver ? <RoundEnd ans={ans} round={round} setRound={setRound} /> : ""}
         </>
     );
 }

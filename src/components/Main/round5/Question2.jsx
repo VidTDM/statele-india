@@ -39,7 +39,7 @@ export default function Question2({ ans, handleCorrectInput, gameEnded1, setGame
                             onClick={() => handleOptionSelect(i)}
                             disabled={gameEnded1}
                         >
-                            {area}km
+                            {area.toLocaleString()} km
                         </button>
                     );
                 })}
