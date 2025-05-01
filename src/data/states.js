@@ -51,7 +51,7 @@ const states = [
         longest_border: "assam",
         area: 83743,
         area_options: [53483, 101791, 83743, 45479],
-        languages: ["nishi", "adi"],
+        languages: ["nyishi", "adi"],
     },
     {
         state: "assam",
@@ -339,7 +339,7 @@ const states = [
         longest_border: "haryana",
         area: 50362,
         area_options: [21087, 50362, 62239, 38350],
-        languages: ["punjab", "hindi"],
+        languages: ["punjabi", "hindi"],
     },
     {
         state: "rajasthan",
@@ -380,7 +380,7 @@ const states = [
         long: 79,
         neighbouring_states: ["andhra_pradesh", "karnataka", "maharashtra", "chhattisgarh"],
         capital_city: "hyderabad",
-        longest_border: "maharasthra",
+        longest_border: "maharashtra",
         area: 112077,
         area_options: [79714, 91087, 112077, 130350],
         languages: ["telugu", "urdu"],
