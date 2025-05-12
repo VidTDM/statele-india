@@ -19,7 +19,6 @@ export default function RoundEnd({ ans, round, setRound }) {
                         .join(" and ")}
                 </b>
             </div>
-            <br />
             <button onClick={handleClick} className="nextRound">
                 Next Round
                 <FontAwesomeIcon icon={faChevronRight} />

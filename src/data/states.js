@@ -194,7 +194,7 @@ const states = [
         state: "jharkhand",
         lat: 23,
         long: 85,
-        neighbouring_states: ["bihar", "odisha", "chhattisgarh", "uttar_pradesh", "bihar", "west_bengal"],
+        neighbouring_states: ["bihar", "odisha", "chhattisgarh", "uttar_pradesh", "west_bengal"],
         capital_city: "ranchi",
         longest_border: "bihar",
         area: 79714,
