@@ -3,18 +3,21 @@ export default function StatesBox({ ans, guesses }) {
         <div className="statesBox">
             {ans.neighbouring_states.map((state, i) => {
                 return (
-                    <img
-                        src={new URL(`../../../assets/${state}.png`, import.meta.url).href}
-                        alt="Mystery State"
-                        className={
+                    <div
+                        className={`state ${
                             guesses.map((state) => state.replaceAll(" ", "_")).includes(state.toUpperCase())
                                 ? "correct"
                                 : ""
-                        }
-                        loading="eager"
-                        fetchpriority="high"
-                        key={i}
-                    />
+                        }`}
+                    >
+                        <img
+                            src={new URL(`../../../assets/${state}.svg`, import.meta.url).href}
+                            alt="Mystery State"
+                            loading="eager"
+                            fetchpriority="high"
+                            key={i}
+                        />
+                    </div>
                 );
             })}
         </div>

@@ -25,3 +25,4 @@ dist-ssr
 .eslintrc.cjs
 
 test.js
+_assets
