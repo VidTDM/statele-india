@@ -1,4 +1,6 @@
+import { faGlobeAsia } from "@fortawesome/free-solid-svg-icons";
 import cities from "../../../data/cities";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function StateInput({ city, setCity, handleSubmit }) {
     return (
@@ -22,6 +24,7 @@ function StateInput({ city, setCity, handleSubmit }) {
             </datalist>
             <button type="submit" className="state-input">
                 Guess
+                <FontAwesomeIcon icon={faGlobeAsia} />
             </button>
         </form>
     );

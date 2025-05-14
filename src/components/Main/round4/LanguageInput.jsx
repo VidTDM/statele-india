@@ -1,5 +1,7 @@
 import shuffleArray from "shuffle-array";
 import languages from "../../../data/languages";
+import { faGlobeAsia } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function LanguageInput({ lang, setLang, handleSubmit }) {
     return (
@@ -22,6 +24,7 @@ function LanguageInput({ lang, setLang, handleSubmit }) {
             </datalist>
             <button type="submit" className="state-input">
                 Guess
+                <FontAwesomeIcon icon={faGlobeAsia} />
             </button>
         </form>
     );
